@@ -2,6 +2,34 @@
 <navigation android:id="@+id/auth_nav_graph"
 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/auth_home_fragment">
 
+    <fragment android:id="@+id/auth_home_fragment" >
+        <action
+            android:id="@+id/action_auth_home_fragment_to_sign_in_loading"
+            app:destination="@id/sign_in_loading" />
+        <action
+            android:id="@+id/action_auth_home_fragment_to_forgot_password3"
+            app:destination="@id/forgot_password" />
+        <action
+            android:id="@+id/action_auth_home_fragment_to_placeholder7"
+            app:destination="@id/sign_up" />
+    </fragment>
+    <fragment android:id="@+id/forgot_password" />
+    <fragment android:id="@+id/sign_in_loading" >
+        <action
+            android:id="@+id/failed_signin"
+            app:destination="@id/auth_home_fragment" />
+    </fragment>
+    <fragment android:id="@+id/sign_up" >
+        <action
+            android:id="@+id/action_sign_up_to_as_vendor"
+            app:destination="@id/as_vendor" />
+        <action
+            android:id="@+id/as_user"
+            app:destination="@id/as_user" />
+    </fragment>
+    <fragment android:id="@+id/as_vendor" />
+    <fragment android:id="@+id/as_user" />
 </navigation>
