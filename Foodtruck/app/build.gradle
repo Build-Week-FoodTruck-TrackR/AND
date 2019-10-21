@@ -33,10 +33,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    // Material Components
     implementation 'com.google.android.material:material:1.0.0'
+    // Navigation Component
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-beta01'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-beta01'
+    // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.1'
 
 }
