@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/authenticationMainFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment android:id="@+id/authenticationMainFragment"
+        android:name="com.example.foodtruck.ui.authentication.AuthenticationMainFragment"
+        android:label="fragment_authentication_main"
+        tools:layout="@layout/fragment_authentication_main" >
+        <action
+            android:id="@+id/action_authenticationMainFragment_to_sign_up"
+            app:destination="@id/sign_up" />
+        <action
+            android:id="@+id/action_authenticationMainFragment_to_sign_in_loading"
+            app:destination="@id/sign_in_loading" />
+        <action
+            android:id="@+id/action_authenticationMainFragment_to_forgot_password"
+            app:destination="@id/forgot_password" />
+    </fragment>
+
+    <fragment android:id="@+id/forgot_password" />
+    <fragment android:id="@+id/sign_in_loading" />
+    <fragment android:id="@+id/sign_up" >
+        <action
+            android:id="@+id/action_sign_up_to_as_vendor"
+            app:destination="@id/as_vendor" />
+        <action
+            android:id="@+id/as_user"
+            app:destination="@id/as_user" />
+    </fragment>
+    <fragment android:id="@+id/as_vendor" />
+    <fragment android:id="@+id/as_user" />
+</navigation>

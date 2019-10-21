@@ -29,4 +29,9 @@
         <item name= "android:fontFamily">serif</item>
     </style>
 
+    <style name="AuthenticationTextInputLayoutStyle.FilledBox" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:layout_width">370dp</item>
+        <item name="android:layout_height">62dp</item>
+    </style>
+
 </resources>
