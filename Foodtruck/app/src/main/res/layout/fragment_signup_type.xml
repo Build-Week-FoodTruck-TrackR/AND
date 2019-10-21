@@ -1,14 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.authentication.SignupTypeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.card.MaterialCardView
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/account_type_cl"
+                android:layout_width="match_parent"
+                android:layout_height="120dp">
+
+                <TextView android:id="@+id/account_type_tv"
+                    android:textAlignment="center"
+                    android:text="@string/account_type"
+                    android:textSize="18sp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.button.MaterialButton android:id="@+id/vendor_button"
+                    android:layout_marginEnd="40dp"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:text="@string/vendor"
+                    app:iconGravity="textStart"
+                    app:icon="@drawable/vendor_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/account_type_tv"
+                    app:layout_constraintTop_toBottomOf="@id/account_type_tv"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"/>
+
+                <com.google.android.material.button.MaterialButton android:id="@+id/foodie_button"
+                    android:layout_marginStart="40dp"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:backgroundTint="@android:color/darker_gray"
+                    app:icon="@drawable/foodie_icon"
+                    android:text="Foodie"
+                    app:layout_constraintStart_toStartOf="@id/account_type_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/vendor_button"
+                    app:layout_constraintBottom_toBottomOf="@id/vendor_button"
+                    app:iconGravity="textStart"
+                    android:layout_width="150dp"
+                    android:layout_height="60dp"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
