@@ -18,12 +18,12 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [AuthenticationHomeFragment.OnFragmentInteractionListener] interface
+ * [AuthenticationMainFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [AuthenticationHomeFragment.newInstance] factory method to
+ * Use the [AuthenticationMainFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AuthenticationHomeFragment : Fragment() {
+class AuthenticationMainFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,7 +42,7 @@ class AuthenticationHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_authentication_home, container, false)
+        return inflater.inflate(R.layout.fragment_authentication_main, container, false)
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -87,12 +87,12 @@ class AuthenticationHomeFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment AuthenticationHomeFragment.
+         * @return A new instance of fragment AuthenticationMainFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            AuthenticationHomeFragment().apply {
+            AuthenticationMainFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation android:id="@+id/auth_nav_graph"
-
+<navigation xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/authenticationMainFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/auth_home_fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <fragment android:id="@+id/auth_home_fragment" >
+    <fragment android:id="@+id/authenticationMainFragment"
+        android:name="com.example.foodtruck.ui.authentication.AuthenticationMainFragment"
+        android:label="fragment_authentication_main"
+        tools:layout="@layout/fragment_authentication_main" >
         <action
-            android:id="@+id/action_auth_home_fragment_to_sign_in_loading"
+            android:id="@+id/action_authenticationMainFragment_to_sign_up"
+            app:destination="@id/sign_up" />
+        <action
+            android:id="@+id/action_authenticationMainFragment_to_sign_in_loading"
             app:destination="@id/sign_in_loading" />
         <action
-            android:id="@+id/action_auth_home_fragment_to_forgot_password3"
+            android:id="@+id/action_authenticationMainFragment_to_forgot_password"
             app:destination="@id/forgot_password" />
-        <action
-            android:id="@+id/action_auth_home_fragment_to_placeholder7"
-            app:destination="@id/sign_up" />
     </fragment>
+
     <fragment android:id="@+id/forgot_password" />
-    <fragment android:id="@+id/sign_in_loading" >
-        <action
-            android:id="@+id/failed_signin"
-            app:destination="@id/auth_home_fragment" />
-    </fragment>
+    <fragment android:id="@+id/sign_in_loading" />
     <fragment android:id="@+id/sign_up" >
         <action
             android:id="@+id/action_sign_up_to_as_vendor"
