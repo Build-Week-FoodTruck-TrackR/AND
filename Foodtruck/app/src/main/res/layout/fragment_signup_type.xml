@@ -17,50 +17,71 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/account_type_cl"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="120dp">
+                android:layout_height="wrap_content">
+                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/account_type_cl"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp">
 
-                <TextView android:id="@+id/account_type_tv"
-                    android:textAlignment="center"
-                    android:text="@string/account_type"
-                    android:textSize="18sp"
-                    android:layout_marginTop="12dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/account_type_tv"
+                        android:textAlignment="center"
+                        android:text="@string/account_type"
+                        android:textSize="18sp"
+                        android:layout_marginTop="12dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-                <com.google.android.material.button.MaterialButton android:id="@+id/vendor_button"
-                    android:layout_marginEnd="40dp"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:backgroundTint="@android:color/darker_gray"
-                    android:text="@string/vendor"
-                    app:iconGravity="textStart"
-                    app:icon="@drawable/vendor_icon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/account_type_tv"
-                    app:layout_constraintTop_toBottomOf="@id/account_type_tv"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/vendor_button"
+                        android:layout_marginEnd="40dp"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:backgroundTint="@android:color/darker_gray"
+                        android:text="@string/vendor"
+                        app:iconGravity="textStart"
+                        app:icon="@drawable/vendor_icon"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="@id/account_type_tv"
+                        app:layout_constraintTop_toBottomOf="@id/account_type_tv"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"/>
 
-                <com.google.android.material.button.MaterialButton android:id="@+id/foodie_button"
-                    android:layout_marginStart="40dp"
-                    style="@style/Widget.MaterialComponents.Button.Icon"
-                    android:backgroundTint="@android:color/darker_gray"
-                    app:icon="@drawable/foodie_icon"
-                    android:text="Foodie"
-                    app:layout_constraintStart_toStartOf="@id/account_type_tv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/vendor_button"
-                    app:layout_constraintBottom_toBottomOf="@id/vendor_button"
-                    app:iconGravity="textStart"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"/>
+                    <com.google.android.material.button.MaterialButton android:id="@+id/foodie_button"
+                        android:layout_marginStart="40dp"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:backgroundTint="@android:color/darker_gray"
+                        app:icon="@drawable/foodie_icon"
+                        android:text="Foodie"
+                        app:layout_constraintStart_toStartOf="@id/account_type_tv"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/vendor_button"
+                        app:layout_constraintBottom_toBottomOf="@id/vendor_button"
+                        app:iconGravity="textStart"
+                        android:layout_width="150dp"
+                        android:layout_height="60dp"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:background="@android:color/darker_gray"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/foodie_account_form_constraintlayout"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp">
+
+
+
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
