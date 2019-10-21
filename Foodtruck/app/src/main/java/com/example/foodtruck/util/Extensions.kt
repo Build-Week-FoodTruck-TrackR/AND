@@ -1,4 +1,4 @@
-package com.example.foodtruck
+package com.example.foodtruck.util
 
 import android.widget.ImageView
 
