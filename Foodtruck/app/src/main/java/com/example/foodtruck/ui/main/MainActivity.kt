@@ -1,4 +1,4 @@
-package com.example.foodtruck.ui
+package com.example.foodtruck.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
