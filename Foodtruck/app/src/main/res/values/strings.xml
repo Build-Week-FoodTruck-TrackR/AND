@@ -16,4 +16,9 @@
     <string name="croissant">Croissant</string>
     <string name="_9_50">$9.50</string>
     <string name="review_dummy">The food in this restaurant was amazing, I love the lamb, it was tender and succulent. Would come back again!</string>
+    <string name="add_menu_to_food_truck">Add menu for prospective diners</string>
+    <string name="hours_operational">Hours operational</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="military0">0:00</string>
 </resources>

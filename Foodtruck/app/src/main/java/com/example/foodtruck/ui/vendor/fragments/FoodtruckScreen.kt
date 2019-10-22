@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.foodtruck.R
+import kotlinx.android.synthetic.main.fragment_foodtruck_screen.*
 
 class FoodtruckScreen : Fragment() {
 
@@ -16,4 +17,10 @@ class FoodtruckScreen : Fragment() {
         return inflater.inflate(R.layout.fragment_foodtruck_screen, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        floating_action_btn.setOnClickListener {
+            
+        }
+    }
 }
