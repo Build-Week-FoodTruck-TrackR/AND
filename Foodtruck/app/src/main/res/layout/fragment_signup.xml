@@ -7,6 +7,7 @@
     tools:context=".ui.authentication.fragments.SignupFragment">
 
     <com.google.android.material.card.MaterialCardView
+        app:cardElevation="4dp"
         android:layout_marginTop="32dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
@@ -36,14 +37,34 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
-                    <FrameLayout
-                        app:layout_constraintStart_toStartOf="@id/account_type_tv"
-                        app:layout_constraintEnd_toEndOf="@id/account_type_tv"
+                    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/account_type_button_toggle_group"
+                        app:singleSelection="true"
                         app:layout_constraintTop_toBottomOf="@id/account_type_tv"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
-                    </FrameLayout>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/foodie_button"
+                            android:layout_marginEnd="0.5dp"
+                            android:backgroundTint="@color/button_color_state_list"
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:text="@string/foodie"
+                            app:iconGravity="textStart"
+                            app:icon="@drawable/foodie_icon"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"/>
+                        <com.google.android.material.button.MaterialButton android:id="@+id/vendor_button"
+                            android:layout_marginStart="0.5dp"
+                            android:backgroundTint="@color/button_color_state_list"
+                            style="@style/Widget.MaterialComponents.Button.Icon"
+                            android:text="@string/vendor"
+                            app:iconGravity="textStart"
+                            app:icon="@drawable/vendor_icon"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"/>
+
+                    </com.google.android.material.button.MaterialButtonToggleGroup>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

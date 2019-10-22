@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
@@ -25,39 +26,5 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        vendor_button.backgroundTintList = ContextCompat.getColorStateList(context!!,R.color.button_color_state_list)
-
-        vendor_button.setOnClickListener {
-            when(view.vendor_account_form_constrainlayout.isVisible) {
-                true -> {
-                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!,R.color.colorGrey))
-                    view.vendor_account_form_constrainlayout.visibility = View.GONE
-                    view.divider.visibility = View.GONE
-                }
-                false -> {
-                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorAccent))
-                    view.foodie_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
-                    view.vendor_account_form_constrainlayout.visibility = View.VISIBLE
-                    view.foodie_account_form_constraintlayout.visibility = View.GONE
-                    view.divider.visibility = View.VISIBLE
-                }
-            }
-        }
-        foodie_button.setOnClickListener {
-            when (view.foodie_account_form_constraintlayout.isVisible) {
-                true -> {
-                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
-                    view.foodie_account_form_constraintlayout.visibility = View.GONE
-                    view.divider.visibility = View.GONE
-                }
-                false -> {
-                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
-                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorAccent))
-                    view.foodie_account_form_constraintlayout.visibility = View.VISIBLE
-                    view.vendor_account_form_constrainlayout.visibility = View.GONE
-                    view.divider.visibility = View.VISIBLE
-                }
-            }
-        }
     }
 }
