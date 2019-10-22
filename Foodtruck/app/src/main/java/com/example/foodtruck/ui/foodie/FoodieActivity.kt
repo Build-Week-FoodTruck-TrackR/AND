@@ -1,12 +1,13 @@
-package com.example.foodtruck.ui.detail
+package com.example.foodtruck.ui.foodie
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.foodtruck.R
 
-class FoodTruckDetails : AppCompatActivity() {
+class FoodieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_food_truck_details)
+        setContentView(R.layout.activity_foodie)
     }
 }
