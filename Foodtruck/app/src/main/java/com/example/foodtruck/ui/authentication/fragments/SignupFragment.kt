@@ -46,6 +46,22 @@ class SignupFragment : Fragment() {
                 false -> {
                     view.vendor_button.isPressed = true
                     view.vendor_account_form_constrainlayout.visibility = View.VISIBLE
+                    view.foodie_account_form_constraintlayout.visibility = View.GONE
+                    view.divider.visibility = View.VISIBLE
+                }
+            }
+        }
+        foodie_button.setOnClickListener {
+            when (view.foodie_account_form_constraintlayout.isVisible) {
+                true -> {
+                    view.foodie_button.isPressed = false
+                    view.foodie_account_form_constraintlayout.visibility = View.GONE
+                    view.divider.visibility = View.GONE
+                }
+                false -> {
+                    view.vendor_button.isPressed = true
+                    view.foodie_account_form_constraintlayout.visibility = View.VISIBLE
+                    view.vendor_account_form_constrainlayout.visibility = View.GONE
                     view.divider.visibility = View.VISIBLE
                 }
             }

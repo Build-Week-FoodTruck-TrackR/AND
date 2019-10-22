@@ -28,8 +28,7 @@ class AuthenticationMainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toSignupFragment =  AuthenticationMainFragmentDirections
-            .actionAuthenticationMainFragmentToSignupFragment()
+        toSignupFragment =  AuthenticationMainFragmentDirections.actionAuthenticationMainFragmentToSignupFragment()
 
         sign_in_button.setOnClickListener {
             TODO()

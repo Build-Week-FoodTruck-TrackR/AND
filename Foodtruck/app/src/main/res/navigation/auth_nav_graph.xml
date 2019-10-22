@@ -3,8 +3,7 @@
     android:id="@+id/auth_nav_graph"
     app:startDestination="@id/splashScreenFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:ignore="UnusedNavigation">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <fragment
         android:id="@+id/splashScreenFragment"
@@ -33,25 +32,16 @@
                 android:id="@+id/action_authenticationMainFragment_to_forgot_password"
                 app:destination="@id/forgot_password" />
             <action
-                android:id="@+id/action_authenticationMainFragment_to_signupFragment"
-                app:destination="@id/signupFragment" />
-            <action
                 android:id="@+id/action_authenticationMainFragment_to_vendorActivity"
                 app:destination="@id/vendorActivity" />
             <action
                 android:id="@+id/action_authenticationMainFragment_to_foodieActivity"
                 app:destination="@id/foodieActivity" />
+            <action
+                android:id="@+id/action_authenticationMainFragment_to_signupFragment"
+                app:destination="@id/signupFragment" />
         </fragment>
         <fragment android:id="@+id/forgot_password" />
-        <fragment
-            android:id="@+id/signupFragment"
-            android:name="com.example.foodtruck.ui.authentication.fragments.SignupFragment"
-            android:label="fragment_signup"
-            tools:layout="@layout/fragment_signup">
-            <action
-                android:id="@+id/action_signupFragment_to_authenticationMainFragment"
-                app:destination="@id/authenticationMainFragment" />
-        </fragment>
         <activity
             android:id="@+id/foodieActivity"
             android:name="com.example.foodtruck.ui.foodie.FoodieActivity"
@@ -62,6 +52,11 @@
             android:name="com.example.foodtruck.ui.vendor.VendorActivity"
             android:label="activity_vendor"
             tools:layout="@layout/activity_vendor" />
+        <fragment
+            android:id="@+id/signupFragment"
+            android:name="com.example.foodtruck.ui.authentication.fragments.SignupFragment"
+            android:label="fragment_signup"
+            tools:layout="@layout/fragment_signup" />
     </navigation>
     <activity
         android:id="@+id/foodieActivity"
