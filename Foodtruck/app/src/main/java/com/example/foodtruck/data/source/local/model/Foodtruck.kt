@@ -1,5 +1,3 @@
 package com.example.foodtruck.data.source.local.model
 
-class Foodtruck {
-
-}
+class Foodtruck(val name: String, val model: String)
