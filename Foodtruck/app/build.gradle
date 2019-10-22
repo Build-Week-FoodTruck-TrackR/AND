@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -43,8 +45,10 @@ dependencies {
     // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'androidx.room:room-ktx:2.2.0'
+    // Kotlin Extensions and Coroutine support for Room (coroutines unused in MVP)
     implementation 'androidx.room:room-runtime:2.2.0'
-    implementation 'androidx.room:room-runtime:2.2.0'
+    // Room Compiler
+    kapt 'androidx.room:room-compiler:2.2.0'
 
 
 }
