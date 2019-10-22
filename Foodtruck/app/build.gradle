@@ -44,11 +44,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-beta01'
     // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.1'
-    implementation 'androidx.room:room-ktx:2.2.0'
     // Kotlin Extensions and Coroutine support for Room (coroutines unused in MVP)
+    implementation 'androidx.room:room-ktx:2.2.0'
+    // Room Runtime
     implementation 'androidx.room:room-runtime:2.2.0'
     // Room Compiler
     kapt 'androidx.room:room-compiler:2.2.0'
+    // Test helpers
+    testImplementation 'androidx.room:room-testing:2.2.0'
 
 
 }
