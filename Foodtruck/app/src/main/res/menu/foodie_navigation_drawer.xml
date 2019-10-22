@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/destination_search"
+        android:actionLayout="@layout/menu_item_search"/>
+
+    <item
+        android:id="@+id/destination_map"
+        android:actionLayout="@layout/menu_item_map"/>
+
+    <item
+        android:id="@+id/destination_favorites"
+        android:actionLayout="@layout/menu_item_favorites"/>
+
+    <item
+        android:id="@+id/destination_settings"
+        android:actionLayout="@layout/menu_item_settings"/>
+</menu>
