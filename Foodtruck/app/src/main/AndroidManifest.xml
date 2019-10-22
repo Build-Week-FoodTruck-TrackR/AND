@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.authentication.AuthenticationActivity"></activity>
+        <activity android:name=".ui.vendor.VendorActivity"></activity>
+        <activity android:name=".ui.foodie.FoodieActivity" />
+        <activity android:name=".ui.authentication.AuthenticationActivity" />
         <activity android:name=".ui.LoginActivityDiner" />
         <activity android:name=".ui.detail.FoodTruckDetails" />
         <activity android:name=".ui.main.MainActivity">
