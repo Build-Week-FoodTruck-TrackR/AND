@@ -1,9 +1,9 @@
-package com.example.foodtruck.data.source.local.model
+package com.example.foodtruck.data.source.local.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.foodtruck.ui.foodie.fragments.Favorites
+import com.example.foodtruck.data.source.local.model.AccountType
 
 @Entity(tableName = "users")
 data class User(

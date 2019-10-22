@@ -1,4 +1,4 @@
-package com.example.foodtruck.data.source.local.model
+package com.example.foodtruck.data.source.local.model.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -6,7 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "vendor_data",
+    tableName = "foodie_data",
     foreignKeys = (
         arrayOf(
             ForeignKey(
@@ -18,7 +18,7 @@ import androidx.room.PrimaryKey
         )
     )
 )
-data class VendorData(
+data class FoodieData(
     @PrimaryKey @ColumnInfo(name = "id")
     val id: Int
 )
