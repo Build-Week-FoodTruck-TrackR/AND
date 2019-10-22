@@ -3,10 +3,7 @@ package com.example.foodtruck.ui.vendor.fragments
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CheckBox
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -15,7 +12,7 @@ import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
 
-class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener {
+class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
 
     private lateinit var listener: FoodtruckReceiver
 
@@ -57,7 +54,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         super.onViewCreated(view, savedInstanceState)
 
         top_toolbar.setNavigationOnClickListener {
-            context!!.createAlert({d, i -> dismiss() }, {d, i-> }) //stay on the fragment
+            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "Are you sure you want to cancel?") //stay on the fragment
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
@@ -88,5 +85,9 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         dismiss()
         return false
+    }
+
+    override fun receiveMenuItem(menu: Menu) {
+
     }
 }
