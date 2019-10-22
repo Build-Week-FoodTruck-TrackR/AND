@@ -10,11 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.vendor.VendorActivity"></activity>
-        <activity android:name=".ui.foodie.FoodieActivity" />
-        <activity android:name=".ui.authentication.AuthenticationActivity" />
-        <activity android:name=".ui.LoginActivityDiner" />
-        <activity android:name=".ui.detail.FoodTruckDetails" />
-        <activity android:name=".ui.main.MainActivity">
+        <activity android:name=".ui.foodie.FoodieActivity"/>
+        <activity android:name=".ui.authentication.AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
