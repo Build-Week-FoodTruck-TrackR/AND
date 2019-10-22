@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/email_textinput_layout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_textinput_layout"
         android:layout_margin="64dp"
         style="@style/AuthenticationTextInputLayoutStyle.FilledBox"
         app:layout_constraintTop_toBottomOf="@+id/app_logo_image_view"
@@ -25,12 +26,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:hint="@string/email">
 
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/email_edit_text"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout android:id="@+id/password_textinput_layout"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_textinput_layout"
         android:layout_margin="16dp"
         style="@style/AuthenticationTextInputLayoutStyle.FilledBox"
         app:layout_constraintTop_toBottomOf="@id/email_textinput_layout"
@@ -38,7 +41,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:hint="@string/password">
 
-        <com.google.android.material.textfield.TextInputEditText android:id="@+id/password_edit_text"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
@@ -56,7 +60,8 @@
         android:layout_width="180dp"
         android:layout_height="60dp"/>
 
-    <com.google.android.material.button.MaterialButton android:id="@+id/sign_up_button"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sign_up_button"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="@id/sign_in_button"
         app:layout_constraintEnd_toEndOf="@id/password_textinput_layout"
@@ -64,7 +69,8 @@
         android:layout_width="180dp"
         android:layout_height="60dp"/>
 
-    <com.google.android.material.button.MaterialButton android:id="@+id/forgot_password_bttn"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/forgot_password_bttn"
         android:layout_margin="4dp"
         android:textColor="@android:color/black"
         style="@style/Widget.MaterialComponents.Button.TextButton"

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_nav_graph"
-    app:startDestination="@id/splashScreenFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/authenticationMainFragment">
 
     <fragment android:id="@+id/authenticationMainFragment"
         android:name="com.example.foodtruck.ui.authentication.fragments.AuthenticationMainFragment"
@@ -17,7 +17,7 @@
             app:destination="@id/signupFragment" />
         <action
             android:id="@+id/action_authenticationMainFragment_to_foodieActivity"
-            app:destination="@id/foodieActivity" />
+            app:destination="@+id/foodieActivity" />
         <action
             android:id="@+id/action_authenticationMainFragment_to_vendorActivity"
             app:destination="@id/vendorActivity" />
@@ -31,15 +31,6 @@
         tools:layout="@layout/fragment_signup" >
         <action
             android:id="@+id/action_signupFragment_to_authenticationMainFragment"
-            app:destination="@id/authenticationMainFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/splashScreenFragment"
-        android:name="com.example.foodtruck.ui.authentication.fragments.SplashScreenFragment"
-        android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash_screen" >
-        <action
-            android:id="@+id/action_splashScreenFragment_to_authenticationMainFragment"
             app:destination="@id/authenticationMainFragment" />
     </fragment>
     <activity
