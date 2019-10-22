@@ -25,6 +25,7 @@ class SplashScreenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val action = SplashScreenFragmentDirections.actionSplashScreenFragmentToAuthentication()
-        findNavController().navigate(action)
+        findNavController()
+            .navigate(action)
     }
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 
 import com.example.foodtruck.R
@@ -13,11 +14,8 @@ import kotlinx.android.synthetic.main.fragment_authentication_main.*
 
 class AuthenticationMainFragment : Fragment() {
 
-    private val toSignupFragment by lazy {
-        AuthenticationMainFragmentDirections
-            .actionAuthenticationMainFragmentToSignupFragment()
+    private lateinit var toSignupFragment: NavDirections
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +27,9 @@ class AuthenticationMainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        toSignupFragment =  AuthenticationMainFragmentDirections
+            .actionAuthenticationMainFragmentToSignupFragment()
 
         sign_in_button.setOnClickListener {
             TODO()
