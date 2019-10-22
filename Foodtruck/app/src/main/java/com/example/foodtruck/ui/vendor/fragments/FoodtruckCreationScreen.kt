@@ -1,6 +1,7 @@
 package com.example.foodtruck.ui.vendor.fragments
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -10,14 +11,30 @@ import android.widget.CheckBox
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import com.example.foodtruck.R
+import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
 
 class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener {
 
+    private lateinit var listener: FoodtruckReceiver
+
+    interface FoodtruckReceiver{
+        fun receiveFoodtruck(foodtruck: Foodtruck)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialog)
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FoodtruckReceiver) {
+            listener = context
+        } else {
+            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+        }
     }
 
     override fun onStart() {
@@ -44,6 +61,12 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
+
+        switch_menu.setOnCheckedChangeListener { compoundButton, bool ->
+            if(bool){
+
+            }
+        }
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
@@ -59,8 +82,11 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
-
+            val foodtruck = Foodtruck(foodtruckName, foodtruckModel)
+            listener.receiveFoodtruck(foodtruck)
         }
+
+        dismiss()
         return false
     }
 }
