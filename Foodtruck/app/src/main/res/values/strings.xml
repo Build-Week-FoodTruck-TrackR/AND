@@ -6,7 +6,6 @@
     <string name="more_info">More info</string>
     <string name="sandwiches_pizza_barfood">$ • Sandwiches • Pizza • Barfood</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -14,4 +13,7 @@
     <string name="sign_up">Sign up</string>
     <string name="vendor">Vendor</string>
     <string name="account_type">Account Type</string>
+    <string name="croissant">Croissant</string>
+    <string name="_9_50">$9.50</string>
+    <string name="review_dummy">The food in this restaurant was amazing, I love the lamb, it was tender and succulent. Would come back again!</string>
 </resources>

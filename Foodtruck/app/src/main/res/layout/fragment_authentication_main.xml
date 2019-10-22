@@ -48,8 +48,8 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton android:id="@+id/sign_in_button"
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sign_in_button"
         app:strokeColor="@color/colorAccent"
         app:strokeWidth="2dp"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"

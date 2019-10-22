@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.authentication.fragments.SignupTypeFragment">
+    tools:context=".ui.authentication.fragments.SignupFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_marginTop="32dp"
@@ -66,7 +66,7 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <View
+                <View android:id="@+id/divider"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="0.6dp"
@@ -110,6 +110,7 @@
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="400dp">
+
                     <com.google.android.material.textfield.TextInputLayout
 
                         android:layout_marginTop="16dp"
