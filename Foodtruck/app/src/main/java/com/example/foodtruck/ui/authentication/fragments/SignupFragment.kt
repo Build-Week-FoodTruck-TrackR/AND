@@ -1,5 +1,6 @@
 package com.example.foodtruck.ui.authentication.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,12 +30,13 @@ class SignupFragment : Fragment() {
         vendor_button.setOnClickListener {
             when(view.vendor_account_form_constrainlayout.isVisible) {
                 true -> {
-                    view.vendor_button.isPressed = false
+                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!,R.color.colorGrey))
                     view.vendor_account_form_constrainlayout.visibility = View.GONE
                     view.divider.visibility = View.GONE
                 }
                 false -> {
-                    view.vendor_button.isPressed = true
+                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorAccent))
+                    view.foodie_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
                     view.vendor_account_form_constrainlayout.visibility = View.VISIBLE
                     view.foodie_account_form_constraintlayout.visibility = View.GONE
                     view.divider.visibility = View.VISIBLE
@@ -44,12 +46,13 @@ class SignupFragment : Fragment() {
         foodie_button.setOnClickListener {
             when (view.foodie_account_form_constraintlayout.isVisible) {
                 true -> {
-                    view.foodie_button.isPressed = false
+                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
                     view.foodie_account_form_constraintlayout.visibility = View.GONE
                     view.divider.visibility = View.GONE
                 }
                 false -> {
-                    view.vendor_button.isPressed = true
+                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorGrey))
+                    view.vendor_button.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorAccent))
                     view.foodie_account_form_constraintlayout.visibility = View.VISIBLE
                     view.vendor_account_form_constrainlayout.visibility = View.GONE
                     view.divider.visibility = View.VISIBLE
