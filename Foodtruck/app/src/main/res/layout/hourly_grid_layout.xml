@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/monday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_monday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:id="@+id/spinner1"
+            android:text="@string/monday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25.5dp"/>
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tuesday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_tuesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="Tuesday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"/>
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wednesday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_wednesday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="Wednesday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1.8dp"/>
+
+        <Spinner
+            android:id="@+id/spinner5"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner6"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+        android:id="@+id/thursday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_thursday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="@string/thursday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17dp"/>
+
+        <Spinner
+            android:id="@+id/spinner7"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner8"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/friday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_friday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="Friday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="37dp"/>
+
+        <Spinner
+            android:id="@+id/spinner9"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner10"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/saturday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_saturday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="Saturday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="21dp"/>
+
+        <Spinner
+            android:id="@+id/spinner11"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner12"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/sunday_column"
+        android:orientation="horizontal">
+        <CheckBox
+            android:id="@+id/checkbox_sunday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:checked="true"/>
+
+        <TextView
+            android:text="Sunday"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="31dp"/>
+
+        <Spinner
+            android:id="@+id/spinner13"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:text="-"
+            android:fontFamily="serif"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Spinner
+            android:id="@+id/spinner14"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+</GridLayout>
