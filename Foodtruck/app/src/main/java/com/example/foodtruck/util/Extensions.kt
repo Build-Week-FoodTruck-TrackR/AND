@@ -12,15 +12,17 @@ fun Context.createAlert(
     message: String = "",
     positiveButtonText: String = "YES",
     negativeButtonText: String = "NO",
-    view: View? = null
+    layoutResId: Int? = null
 ) {
-    AlertDialog.Builder(this)
+    val a = AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
-        .setView(view!!)
-        .create()
-        .show()
+    layoutResId?.let{
+        a.setView(it)
+    }
+        a.create()
+        a.show()
 }
 
 // View Visibility
