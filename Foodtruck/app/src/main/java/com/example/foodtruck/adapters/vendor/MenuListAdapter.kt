@@ -27,7 +27,7 @@ class MenuListAdapter(val menuData: Menu): RecyclerView.Adapter<MenuListAdapter.
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.menuItemName.text = menuData.menuItemList[position].food
+        holder.menuItemName.text = menuData.menuItemList[position].foodName
         holder.menuItemPrice.text = menuData.menuItemList[position].price.toString()
 
         holder.img_food_item.setOnClickListener {

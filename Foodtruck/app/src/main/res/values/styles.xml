@@ -44,4 +44,9 @@
         <item name="android:windowBackground">@android:color/white</item>
         <item name="actionMenuTextColor">#000</item>
     </style>
+
+    <style name="MySpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:drawSelectorOnTop">true</item>
+        <item name="android:entries">@array/spinnerItems</item>
+    </style>
 </resources>

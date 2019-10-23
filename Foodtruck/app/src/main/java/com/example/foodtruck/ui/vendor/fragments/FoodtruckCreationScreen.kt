@@ -3,6 +3,7 @@ package com.example.foodtruck.ui.vendor.fragments
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.CheckBox
 import androidx.appcompat.widget.Toolbar
@@ -12,9 +13,10 @@ import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
 
-class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
+class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener {
 
     private lateinit var listener: FoodtruckReceiver
+    private var myMenu: com.example.foodtruck.data.source.local.model.Menu? = null
 
     interface FoodtruckReceiver{
         fun receiveFoodtruck(foodtruck: Foodtruck)
@@ -54,13 +56,16 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         super.onViewCreated(view, savedInstanceState)
 
         top_toolbar.setNavigationOnClickListener {
-            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "Are you sure you want to cancel?") //stay on the fragment
+            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "YES", "NO","Are you sure you want to cancel?") //stay on the fragment
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
 
         switch_menu.setOnCheckedChangeListener { compoundButton, bool ->
             if(bool){
+                val m = MenuCreationScreen()
+                m.show(fragmentManager!!, "menu creation")
+            } else{
 
             }
         }
@@ -79,15 +84,13 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
-            val foodtruck = Foodtruck(foodtruckName, foodtruckModel)
+
+            val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, myMenu)
+
             listener.receiveFoodtruck(foodtruck)
         }
 
         dismiss()
         return false
-    }
-
-    override fun receiveMenuItem(menu: Menu) {
-
     }
 }
