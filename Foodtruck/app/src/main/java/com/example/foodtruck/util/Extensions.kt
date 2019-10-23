@@ -9,17 +9,25 @@ import androidx.appcompat.app.AlertDialog
 fun Context.createAlert(
     positiveListener: (DialogInterface, Int) -> Unit,
     negativeListener: (DialogInterface, Int) -> Unit,
-    message: String = "",
     positiveButtonText: String = "YES",
     negativeButtonText: String = "NO",
+    message: String? = null,
+    title: String? = null,
     layoutResId: Int? = null
 ) {
     val a = AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
+
+    title?.let{
+        a.setTitle(it)
+    }
     layoutResId?.let{
         a.setView(it)
+    }
+    message?.let{
+        a.setMessage(it)
     }
         a.create()
         a.show()

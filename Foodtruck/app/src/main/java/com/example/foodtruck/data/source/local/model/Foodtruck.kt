@@ -2,7 +2,7 @@ package com.example.foodtruck.data.source.local.model
 
 
 //this is the foodtruck we will post to the backend, does not have any current reviews
-open class Foodtruck(val name: String, val model: String, val latitude: Double, val longitude: Double, val menu: Menu? = null)
+open class Foodtruck(val name: String, val model: String, val latitude: Double, val longitude: Double, var menu: Menu? = null)
 
 //when we use a GET request to see the food truck from the backend, we will get all the reviews other diners will have left it.
 class SaveableFoodtruck(val allReviews: MutableList<Reviews>, name: String, model: String, latitude: Double, longitude: Double, menu: Menu? = null) : Foodtruck(name, model, latitude, longitude, menu)
