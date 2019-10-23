@@ -79,8 +79,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
-            val foodtruck = Foodtruck(foodtruckName, foodtruckModel)
-            listener.receiveFoodtruck(foodtruck)
+            /*val foodtruck = TODO()
+            listener.receiveFoodtruck(foodtruck)*/
         }
 
         dismiss()
