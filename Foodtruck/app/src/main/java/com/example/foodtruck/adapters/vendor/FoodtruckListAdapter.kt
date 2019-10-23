@@ -6,22 +6,26 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
+import kotlinx.android.synthetic.main.foodtruck_item_layout.view.*
 
-class FoodtruckListAdapter(val data: MutableList<Foodtruck>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class FoodtruckListAdapter(val data: MutableList<Foodtruck>): RecyclerView.Adapter<FoodtruckListAdapter.ViewHolder>() {
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-
+        val foodTruckName = view.tv_foodtruck_name
+        val foodTruckModel = view.tv_foodtruck_model
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        TODO()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.foodtruck_item_layout, parent, false)
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.foodTruckName.text = data[position].name
+        holder.foodTruckModel.text = data[position].model
     }
 }
