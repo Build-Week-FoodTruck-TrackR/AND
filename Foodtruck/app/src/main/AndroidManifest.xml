@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.vendor.VendorActivity"/>
+        <activity android:name=".ui.vendor.VendorActivity"
+            android:exported="true"/>
         <activity android:name=".ui.foodie.FoodieActivity"
             android:exported="true"/>
         <activity android:name=".ui.authentication.AuthenticationActivity">
