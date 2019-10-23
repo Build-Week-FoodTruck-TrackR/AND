@@ -7,6 +7,7 @@ import android.view.*
 import androidx.fragment.app.DialogFragment
 import com.example.foodtruck.R
 import com.example.foodtruck.util.createAlert
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
 
 class MenuCreationScreen: DialogFragment() {
@@ -42,8 +43,12 @@ class MenuCreationScreen: DialogFragment() {
 
         val positiveListener : (DialogInterface, Int) -> Unit = {
             d, i ->
+            //user pressed submit
+            //(d as DialogFragment).view!!.findViewById<TextInputEditText>(
 
+            if(true){
 
+            }
         }
 
         val negativeListener: (DialogInterface, Int) -> Unit = {
@@ -51,7 +56,7 @@ class MenuCreationScreen: DialogFragment() {
         }
 
         floating_action_btn.setOnClickListener{
-            context!!.createAlert(positiveListener, negativeListener, "Add food item", "Submit", "Cancel")
+            context!!.createAlert(positiveListener, negativeListener, "Add food item", "Submit", "Cancel", R.layout.dialog_food_adder)
         }
     }
 }

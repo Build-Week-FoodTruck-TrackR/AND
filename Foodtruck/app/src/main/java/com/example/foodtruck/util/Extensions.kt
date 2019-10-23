@@ -6,12 +6,16 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 
 fun Context.createAlert(positiveListener: (DialogInterface, Int)->Unit, negativeListener: (DialogInterface, Int)->Unit,
-                        message: String = "", positiveButtonText: String = "YES", negativeButtonText: String = "NO", view: View? = null){
-    AlertDialog.Builder(this)
+                        message: String = "", positiveButtonText: String = "YES", negativeButtonText: String = "NO", layoutResId: Int? = null){
+
+    val a = AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
-        .setView(view!!)
-        .create()
-        .show()
+
+    layoutResId?.let{
+        a.setView(it)
+    }
+        a.create()
+        a.show()
 }
