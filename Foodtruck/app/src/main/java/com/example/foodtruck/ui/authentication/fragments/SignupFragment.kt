@@ -42,7 +42,8 @@ class SignupFragment : Fragment() {
                     val checkedButtons = group.checkedButtonIds
                     when (checkedButtons.isNotEmpty()) {
                         true -> {
-                            if (checkedButtons.contains(foodie_button.id)) {
+                            @Suppress("SimplifyBooleanWithConstants")
+                            if (checkedButtons.contains(foodie_button.id) == true) {
                                 expandFoodieForm()
                             } else {
                                 expandVendorForm()
