@@ -1,33 +1,34 @@
 package com.example.foodtruck.ui.authentication
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.foodtruck.data.source.local.model.NewUser
 import com.example.foodtruck.data.source.local.model.entities.User
 import com.example.foodtruck.data.source.local.room.UserRoomDatabase
 import com.example.foodtruck.repository.AuthRepository
 import kotlinx.coroutines.launch
 
-class AuthenticationViewModel(application: Application) : AndroidViewModel(application) {
+class AuthenticationViewModel(private val savedStateHandle: SavedStateHandle, private val repository: AuthRepository) : ViewModel() {
 
-    // Reference to AuthRepository
-    private val authRepository: AuthRepository
-    // LiveData gives us updated list of Users as they change
-    private val allCachedUsers: LiveData<List<User>>
-    private val currentUser: LiveData<User>
-
-    init {
-        val userDao = UserRoomDatabase.getDatabase(application).userDao()
-        authRepository = AuthRepository(userDao)
-        allCachedUsers = authRepository.cachedUsers
-        currentUser = authRepository.currentUser
+    companion object {
+        private const val USER_KEY = "userId"
     }
 
-    fun insertUser(user: User) = viewModelScope.launch {
-        authRepository.insertUser(user)
+    private val _userId  : MutableLiveData<Int> = savedStateHandle.getLiveData(USER_KEY)
+    val userId : LiveData<Int> = _userId
+
+    fun saveCurrentUser(userId: Int) {
+        savedStateHandle.set(USER_KEY, userId)
     }
-    fun setCurrentUser(userId: Int) = viewModelScope.launch {
-        authRepository.updateCurrentUser(userId)
+
+    fun authenticateNewUser(newUser: NewUser) {
+    }
+
+    fun deleteCurrentUser() {
+        savedStateHandle.remove<Int>(USER_KEY)
+    }
+
+    fun getCurrentUser(): String {
+        return savedStateHandle.get(USER_KEY) ?: ""
     }
 }

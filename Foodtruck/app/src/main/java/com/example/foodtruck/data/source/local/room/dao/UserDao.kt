@@ -10,11 +10,5 @@ import com.example.foodtruck.data.source.local.model.entities.User
 interface UserDao : BaseDao<User> {
 
    @Query("SELECT * FROM users WHERE user_id = :userId")
-   fun getSingleUser(userId: Int) : User
-
-    @Query("SELECT * FROM users WHERE username = :username")
-    fun getSingleUser(username: String) : User
-
-    @Query("SELECT * from users")
-    fun getAllUsers() : LiveData<List<User>>
+   suspend fun load(userId: Int) : LiveData<User>
 }
