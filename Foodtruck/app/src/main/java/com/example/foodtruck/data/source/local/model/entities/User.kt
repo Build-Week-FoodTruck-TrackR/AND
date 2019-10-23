@@ -9,7 +9,7 @@ import com.example.foodtruck.data.source.local.model.AccountType
 data class User(
     @PrimaryKey(autoGenerate = false) @ColumnInfo(name = "user_id")
     val userId: Int,
-    @ColumnInfo(name = "username")
+    @PrimaryKey @ColumnInfo(name = "username")
     val username: String,
     @ColumnInfo(name= "account_type")
     val accountType: AccountType

@@ -5,16 +5,18 @@ import androidx.room.*
 @Dao
 interface BaseDao<T> {
 
-    // Insert a object into the database. If the Item already exists, replace it.
+    // Insert a object into the database. If the Item already exists, replaces it.
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     @JvmSuppressWildcards
-    fun create(obj: T)
+    suspend fun insert(obj: T)
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun createAll(objects: List<T>)
+    // Updates an objects parameters in the database if it already exists.
+    @Update
+    @JvmSuppressWildcards
+    suspend fun update(obj: T)
 
     //Delete obeject in database
     @Delete
     @JvmSuppressWildcards
-    fun delete(obj: T)
+    suspend fun delete(obj: T)
 }
