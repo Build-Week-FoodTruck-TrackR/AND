@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
+import com.example.foodtruck.util.setVisibilityToGone
+import com.example.foodtruck.util.setVisibilityToVisible
+import com.example.foodtruck.util.showShortToastMessage
 import kotlinx.android.synthetic.main.fragment_signup.*
-import kotlinx.android.synthetic.main.fragment_signup.view.*
 
 class SignupFragment : Fragment() {
 
@@ -24,37 +24,55 @@ class SignupFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        vendor_button.backgroundTintList = ContextCompat.getColorStateList(context!!,R.color.button_color_state_list)
+        account_type_button_toggle_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
 
-        vendor_button.setOnClickListener {
-            when(view.vendor_account_form_constrainlayout.isVisible) {
+            when (isChecked) {
                 true -> {
-                    view.vendor_button.isPressed = false
-                    view.vendor_account_form_constrainlayout.visibility = View.GONE
-                    view.divider.visibility = View.GONE
+                    divider.setVisibilityToVisible()
+                    when (checkedId) {
+                        foodie_button.id -> {
+                            expandFoodieForm()
+                        }
+                        vendor_button.id -> {
+                            expandVendorForm()
+                        }
+                    }
                 }
                 false -> {
-                    view.vendor_button.isPressed = true
-                    view.vendor_account_form_constrainlayout.visibility = View.VISIBLE
-                    view.foodie_account_form_constraintlayout.visibility = View.GONE
-                    view.divider.visibility = View.VISIBLE
+                    val checkedButtons = group.checkedButtonIds
+                    when (checkedButtons.isNotEmpty()) {
+                        true -> {
+                            @Suppress("SimplifyBooleanWithConstants")
+                            if (checkedButtons.contains(foodie_button.id) == true) {
+                                expandFoodieForm()
+                            } else {
+                                expandVendorForm()
+                            }
+                        }
+                        false -> {
+                            collapseAllExpandables()
+                        }
+                    }
                 }
             }
         }
-        foodie_button.setOnClickListener {
-            when (view.foodie_account_form_constraintlayout.isVisible) {
-                true -> {
-                    view.foodie_button.isPressed = false
-                    view.foodie_account_form_constraintlayout.visibility = View.GONE
-                    view.divider.visibility = View.GONE
-                }
-                false -> {
-                    view.vendor_button.isPressed = true
-                    view.foodie_account_form_constraintlayout.visibility = View.VISIBLE
-                    view.vendor_account_form_constrainlayout.visibility = View.GONE
-                    view.divider.visibility = View.VISIBLE
-                }
-            }
-        }
+    }
+
+    private fun expandFoodieForm() {
+        foodie_account_form_constraintlayout.setVisibilityToVisible()
+        vendor_account_form_constrainlayout.setVisibilityToGone()
+        context?.showShortToastMessage("Create Foodie Account")
+    }
+
+    private fun expandVendorForm() {
+        vendor_account_form_constrainlayout.setVisibilityToVisible()
+        foodie_account_form_constraintlayout.setVisibilityToGone()
+        context?.showShortToastMessage("Create Vendor Account")
+    }
+
+    private fun collapseAllExpandables() {
+        foodie_account_form_constraintlayout.setVisibilityToGone()
+        vendor_account_form_constrainlayout.setVisibilityToGone()
+        divider.setVisibilityToGone()
     }
 }

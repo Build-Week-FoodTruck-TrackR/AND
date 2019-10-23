@@ -26,6 +26,5 @@
     <string name="thursday">Thursday</string>
     <string name="name_of_food_truck">Name of Food Truck</string>
     <string name="no_menu_items_added_yet">No menu items added yet</string>
-    <string name="price">Price</string>
-    <string name="description">Description</string>
+    <string name="foodie">Foodie</string>
 </resources>

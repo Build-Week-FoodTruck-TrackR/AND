@@ -9,7 +9,7 @@ import com.example.foodtruck.R
 import kotlinx.android.synthetic.main.activity_foodie.*
 //
 class FoodieActivity : AppCompatActivity() {
-
+//
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
