@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Menu
+import com.example.foodtruck.ui.vendor.fragments.MenuCreationScreen
 import kotlinx.android.synthetic.main.operator_menu_item_layout.view.*
 
 class MenuListAdapter(val menuData: Menu): RecyclerView.Adapter<MenuListAdapter.ViewHolder>() {
@@ -37,6 +38,7 @@ class MenuListAdapter(val menuData: Menu): RecyclerView.Adapter<MenuListAdapter.
 
         holder.view.setOnClickListener {
             //update menu item entry
+            val m = MenuCreationScreen()
         }
     }
 }
