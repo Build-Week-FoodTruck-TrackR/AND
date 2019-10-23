@@ -16,14 +16,14 @@ class AuthRepository(private val userDao: UserDao) {
             }
         }
     }*/
-    suspend fun loadUser(userId: Int): LiveData<User> {
+    /*suspend fun loadUser(userId: Int): LiveData<User> {
         return userDao.load(userId)
-    }
+    }*/
     suspend fun saveUser(user: User) {
         userDao.insert(user)
     }
     suspend fun updateUser(user: User) {
-
+        userDao.update(user)
     }
     companion object {
         val FRESH_TIMEOUT = TimeUnit.DAYS.toMillis(1)
