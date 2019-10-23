@@ -1,4 +1,7 @@
 package com.example.foodtruck.data.source.local.room.dao
 
-interface FoodieDataDao {
+import com.example.foodtruck.data.common.BaseDao
+import com.example.foodtruck.data.source.local.model.entities.FoodieData
+
+interface FoodieDataDao : BaseDao<FoodieData> {
 }
