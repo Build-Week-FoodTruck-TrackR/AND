@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="15dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
@@ -36,9 +37,10 @@
         style="@style/HeaderTextStyle"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:text="@string/price"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:text="Price"
         android:textSize="18sp"
-        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_input_menu_name" />
 
@@ -73,20 +75,19 @@
         style="@style/HeaderTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
         android:text="@string/description"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@id/price_input"
-        app:layout_constraintTop_toBottomOf="@id/text_input_menu_name"/>
-
+        app:layout_constraintTop_toBottomOf="@id/text_input_menu_name" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/description_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="250dp"
         android:layout_height="150dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         app:counterEnabled="true"
         app:counterMaxLength="50"
@@ -97,7 +98,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="250dp"
             android:layout_height="130dp"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
