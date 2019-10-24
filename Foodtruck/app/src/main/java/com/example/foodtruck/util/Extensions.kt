@@ -3,6 +3,7 @@ package com.example.foodtruck.util
 import android.content.Context
 import android.content.DialogInterface
 import android.text.Editable
+import android.view.Gravity
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
@@ -44,4 +45,10 @@ fun View.setVisibilityToGone() {
 // Show Toast
 fun Context.showShortToastMessage(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.centeredToastMessage(message: String){
+    val toast = Toast.makeText(this, message, Toast.LENGTH_SHORT)
+    toast.setGravity(Gravity.CENTER, 0, 0)
+    toast.show()
 }

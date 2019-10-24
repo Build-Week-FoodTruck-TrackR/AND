@@ -19,9 +19,10 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
     lateinit var listener: FoodtruckReceiver
     private var createdMenu: Menu? = null
+    private var currentPosition: Int? = null
 
     interface FoodtruckReceiver{
-        fun receiveFoodtruck(foodtruck: Foodtruck)
+        fun receiveFoodtruck(foodtruck: Foodtruck, tag: String, position: Int?)
     }
 
     override fun receivePotentialMenu(menu: Menu?) {
@@ -36,6 +37,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setFoodtruckLayout()
 
         top_toolbar.setNavigationOnClickListener {
             context!!.createAlert({d, i -> dismiss() }, {d, i-> }).show() //stay on the fragment
@@ -68,6 +71,22 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         }
     }
 
+    private fun setFoodtruckLayout() {
+        val bundle = arguments
+        if(bundle != null){
+            val foodtruck = bundle.get("foodTruckToEdit") as Foodtruck
+            et_foodtruck_name.setText(foodtruck.name)
+            et_foodtruck_model.setText(foodtruck.model)
+            foodtruck.menu?.let{
+                createdMenu = it
+                btn_create_menu.setVisibilityToGone()
+                btn_edit_menu.setVisibilityToVisible()
+                btn_delete_menu.setVisibilityToVisible()
+            }
+            currentPosition = bundle.get("foodTruckToEditPosition") as Int
+        }
+    }
+
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         val foodtruckName = et_foodtruck_name.text.toString()
         val foodtruckModel = et_foodtruck_model.text.toString()
@@ -90,7 +109,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
             val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, createdMenu)
-            listener.receiveFoodtruck(foodtruck)
+            listener.receiveFoodtruck(foodtruck, tag!!, currentPosition)
             dismiss()
         }
         return false

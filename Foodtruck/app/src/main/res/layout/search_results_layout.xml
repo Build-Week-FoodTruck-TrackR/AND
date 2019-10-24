@@ -37,6 +37,7 @@
         android:gravity="center_horizontal"
         android:text="@string/sandwiches_pizza_barfood"
         android:textSize="12sp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="@+id/img_foodtruck"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_foodtruck_name"/>
@@ -67,6 +68,7 @@
         android:id="@+id/button"
         style="@style/GreyButtonStyle"
         android:text="@string/location"
+        android:textSize="12sp"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="@+id/img_btn_star"
         app:layout_constraintEnd_toStartOf="@+id/rating_bar"
@@ -87,6 +89,16 @@
         app:layout_constraintStart_toStartOf="@+id/button"
         app:layout_constraintTop_toTopOf="@+id/button"
         app:layout_constraintVertical_bias="0.50" />
+
+    <ImageButton
+        android:id="@+id/img_btn_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginTop="152dp"
+        android:src="@drawable/ic_favorite_border_black_24dp"
+        android:tag="unclicked"
+        app:layout_constraintEnd_toEndOf="@+id/tv_foodtruck_name"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

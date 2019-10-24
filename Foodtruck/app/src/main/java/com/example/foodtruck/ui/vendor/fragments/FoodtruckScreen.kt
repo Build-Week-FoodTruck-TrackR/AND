@@ -36,16 +36,21 @@ class FoodtruckScreen : Fragment(), FoodtruckCreationScreen.FoodtruckReceiver {
     }
 
     private fun setupRecyclerView(){
-        foodtruckListAdapter = FoodtruckListAdapter(foodtruckList)
+        foodtruckListAdapter = FoodtruckListAdapter(foodtruckList, this)
         foodtruck_recyclerview.apply{
             adapter = foodtruckListAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
     }
 
-    override fun receiveFoodtruck(foodtruck: Foodtruck) {
+    override fun receiveFoodtruck(foodtruck: Foodtruck, tag: String, position: Int?) {
         //add to list and recyclerview
-        foodtruckList.add(foodtruck)
+        if(tag == "editingFoodTruck"){
+            foodtruckList.removeAt(position!!)
+            foodtruckList.add(position, foodtruck)
+        } else{
+            foodtruckList.add(foodtruck)
+        }
         foodtruckListAdapter.notifyDataSetChanged()
     }
 }
