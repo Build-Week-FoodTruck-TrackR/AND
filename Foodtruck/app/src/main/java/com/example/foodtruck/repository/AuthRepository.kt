@@ -10,7 +10,7 @@ import com.example.foodtruck.data.source.local.model.firebase_models.User
 class AuthRepository() {
 
     private val firebaseAuthSource = FirebaseAuthSource.firebaseAuthSourceInstance
-    private val firestore = InitFirestore()
+    private val firestore = InitFirestore.instance
 
     suspend fun authenticateWithEmailAndPassword(email: String, password: String): String? {
         return firebaseAuthSource.signInWithEmailAndPassword(email, password)
