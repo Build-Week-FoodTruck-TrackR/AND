@@ -10,13 +10,14 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
+import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
 
-class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener {
+class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
 
     private lateinit var listener: FoodtruckReceiver
-    private var myMenu: com.example.foodtruck.data.source.local.model.Menu? = null
+    private var myMenu: Menu? = null
 
     interface FoodtruckReceiver{
         fun receiveFoodtruck(foodtruck: Foodtruck)
@@ -56,7 +57,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         super.onViewCreated(view, savedInstanceState)
 
         top_toolbar.setNavigationOnClickListener {
-            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "YES", "NO","Are you sure you want to cancel?") //stay on the fragment
+            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "YES", "NO","Are you sure you want to cancel?\nYour changes will not be saved.") //stay on the fragment
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
@@ -64,6 +65,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         switch_menu.setOnCheckedChangeListener { compoundButton, bool ->
             if(bool){
                 val m = MenuCreationScreen()
+                m.listener = this
                 m.show(fragmentManager!!, "menu creation")
             } else{
 
@@ -92,5 +94,9 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         dismiss()
         return false
+    }
+
+    override fun receiveMenu(menu: Menu) {
+        Log.i("RECEIVE", "MENU")
     }
 }

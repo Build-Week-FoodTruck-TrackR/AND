@@ -6,13 +6,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 
+//create an alert with two buttons
 fun Context.createAlert(
     positiveListener: (DialogInterface, Int) -> Unit,
     negativeListener: (DialogInterface, Int) -> Unit,
-    positiveButtonText: String = "YES",
-    negativeButtonText: String = "NO",
+    positiveButtonText: String,
+    negativeButtonText: String,
     message: String? = null,
-    title: String? = null,
     layoutResId: Int? = null
 ) {
     val a = AlertDialog.Builder(this)
@@ -20,9 +20,6 @@ fun Context.createAlert(
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
 
-    title?.let{
-        a.setTitle(it)
-    }
     layoutResId?.let{
         a.setView(it)
     }
