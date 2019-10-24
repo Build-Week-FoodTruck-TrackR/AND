@@ -1,6 +1,8 @@
 package com.example.foodtruck.data.source.local.model
 
-class Menu(val menuItemList: MutableList<FoodItem>)
+import java.io.Serializable
 
-class FoodItem(val price: Double, val foodName: String, val foodDescription: String)
+class Menu(val menuItemList: MutableList<FoodItem>) : Serializable
+
+class FoodItem(val price: Double, val foodName: String, var foodDescription: String): Serializable
 

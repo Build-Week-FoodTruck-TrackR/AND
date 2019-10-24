@@ -2,35 +2,34 @@ package com.example.foodtruck.util
 
 import android.content.Context
 import android.content.DialogInterface
+import android.text.Editable
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.textfield.TextInputEditText
 
+//create an alert with two buttons
 fun Context.createAlert(
     positiveListener: (DialogInterface, Int) -> Unit,
     negativeListener: (DialogInterface, Int) -> Unit,
+    message: String? = "Are you sure you want to cancel?\nData may be lost.",
     positiveButtonText: String = "YES",
     negativeButtonText: String = "NO",
-    message: String? = null,
-    title: String? = null,
-    layoutResId: Int? = null
-) {
+    view: View? = null
+) : AlertDialog {
     val a = AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
 
-    title?.let{
-        a.setTitle(it)
-    }
-    layoutResId?.let{
+    view?.let{
         a.setView(it)
     }
     message?.let{
         a.setMessage(it)
     }
-        a.create()
-        a.show()
+    return a.create()
 }
 
 // View Visibility
