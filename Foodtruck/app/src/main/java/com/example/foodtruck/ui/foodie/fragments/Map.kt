@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
+import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -19,12 +20,13 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
 
 
-class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback {
+class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
     private val FINE_ACCESS_REQUEST_CODE = 1
@@ -32,7 +34,8 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
 
     private var currentSearchRadius by Delegates.observable(0.0){
         property, oldValue, newValue->
-        getFurthestFoodtruckLocation()
+        map.clear()
+        setCurrentLocation() //will set my current location again, as well as getting the furthest food truck, then scaling the zoom factor
     }
 
     val furthestFoodtruckLocation by Delegates.observable(LatLng(0.0,0.0)){
@@ -54,6 +57,7 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        map.setOnMarkerClickListener(this)
         //gets the current spinner search radius amount
         currentSearchRadius = listOfSearchRanges[0]
 
@@ -94,11 +98,30 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
             getFurthestFoodtruckLocation()
 
             //adds marker for user's current location
-            map.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude)))
+            map.addMarker(MarkerOptions().position(LatLng(it.latitude, it.longitude))).setTag("User")
         }
     }
 
     private fun getFurthestFoodtruckLocation() {
-        //Iterates over all the foodtrucks in the given search range, and finds the one furthest away
+        //Iterates over all the foodtrucks in the given search range(getting data from backend), and sets the furthest foodtruck location
+        //add markers to every foodtruck while iterating, use foodie icon
+        //add a tag for each marker corresponding to its foodtrick
+    }
+
+    override fun onMarkerClick(marker: Marker?): Boolean {
+        marker?.let{
+            if(it.tag == "User"){
+                //show a simple info window
+                it.title = "GCGsauce's current location\n${it.position.latitude}, ${it.position.longitude}"
+                it.showInfoWindow()
+            } else{ //user clicked on a food truck
+                val foodTruckDetailsDialog = FoodTruckDetailsDialog()
+                val bundle = Bundle()
+                bundle.putSerializable("foodTruckMarker", it.tag as Foodtruck)
+                foodTruckDetailsDialog.arguments = bundle
+                foodTruckDetailsDialog.show(fragmentManager!!, "launchingFoodtruckDetails")
+            }
+        }
+        return true
     }
 }
