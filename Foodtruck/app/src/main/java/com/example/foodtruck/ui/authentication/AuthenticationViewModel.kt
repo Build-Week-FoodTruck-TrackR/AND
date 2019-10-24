@@ -57,10 +57,10 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     fun signOutUser() {
         repository.logout()
     }
-    fun registerUser(email: String, password: String, city: City, username: String, accountType: AccountType) = viewModelScope.launch {
+    fun registerUser(email: String, password: String,username: String, city: City, accountType: AccountType) = viewModelScope.launch {
         try {
             repository.registerWithEmailAndPassword(email, password)?.let {uid ->
-                val newUser = NewUser(email, password, city, username, accountType)
+                val newUser = NewUser(email,city, username, accountType)
                 repository.addNewUserTodatabase(newUser, uid)
                 _uid.postValue(uid)
                 _authenticationState.postValue(AuthenticationState.Authenticated)

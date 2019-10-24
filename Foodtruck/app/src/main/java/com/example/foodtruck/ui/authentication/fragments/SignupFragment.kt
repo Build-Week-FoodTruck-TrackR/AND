@@ -37,9 +37,10 @@ class SignupFragment : Fragment() {
                 .getInstance(appContext)
                 .create(AuthenticationViewModel::class.java)
         }
+
         vendor_submit_button.setOnClickListener {
             if(!password_edit_text.text.isNullOrBlank() && !email_edit_text.text.isNullOrBlank() && !username_et.text.isNullOrBlank()) {
-                authViewModel.registerUser(email_edit_text.text.toString(), password_edit_text.text.toString(), City.BloomingtonIN, username_et.text.toString(), AccountType.Vendor)
+                authViewModel.registerUser(email_edit_text.text.toString(), password_edit_text.text.toString(), username_et.text.toString(), City.BloomingtonIN, AccountType.Vendor)
             }
         }
         account_type_button_toggle_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
