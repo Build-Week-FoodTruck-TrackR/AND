@@ -47,7 +47,7 @@ dependencies {
     // Circle Image View
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     // Kotlin Extensions and Coroutine support for Room (coroutines unused in MVP)
-    
+
     // Material Components
     implementation 'com.google.android.material:material:1.2.0-alpha01'
     // Firebase SDK for Google Analytics

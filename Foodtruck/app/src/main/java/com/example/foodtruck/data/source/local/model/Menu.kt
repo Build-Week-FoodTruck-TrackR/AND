@@ -6,3 +6,5 @@ class Menu(val menuItemList: MutableList<FoodItem>) : Serializable
 
 class FoodItem(val price: Double, val foodName: String, var foodDescription: String): Serializable
 
+//
+
