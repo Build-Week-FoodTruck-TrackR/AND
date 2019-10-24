@@ -163,6 +163,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         "21:00",
         "22:00",
         "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner1).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner2)
             .setItems(
                 "00:00",
@@ -189,6 +191,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner2).selectedIndex = 21
         view.findViewById<MaterialSpinner>(R.id.spinner3)
             .setItems(
                 "00:00",
@@ -215,6 +218,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner3).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner4)
             .setItems(
                 "00:00",
@@ -241,6 +246,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner4).selectedIndex = 21
+
         view.findViewById<MaterialSpinner>(R.id.spinner5)
             .setItems(
                 "00:00",
@@ -267,6 +274,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner5).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner6)
             .setItems(
                 "00:00",
@@ -293,6 +302,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner6).selectedIndex = 21
+
         view.findViewById<MaterialSpinner>(R.id.spinner7)
             .setItems(
                 "00:00",
@@ -319,6 +330,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner7).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner8)
             .setItems(
                 "00:00",
@@ -345,6 +358,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner8).selectedIndex = 21
+
         view.findViewById<MaterialSpinner>(R.id.spinner9)
             .setItems(
                 "00:00",
@@ -371,6 +386,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner9).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner10)
             .setItems(
                 "00:00",
@@ -397,6 +414,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner10).selectedIndex = 21
+
         view.findViewById<MaterialSpinner>(R.id.spinner11)
             .setItems(
                 "00:00",
@@ -423,6 +442,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner11).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner12)
             .setItems(
                 "00:00",
@@ -449,6 +470,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner12).selectedIndex = 21
+
         view.findViewById<MaterialSpinner>(R.id.spinner13)
             .setItems(
                 "00:00",
@@ -475,6 +498,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner13).selectedIndex = 9
+
         view.findViewById<MaterialSpinner>(R.id.spinner14)
             .setItems(
                 "00:00",
@@ -501,6 +526,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
                 "21:00",
                 "22:00",
                 "23:00")
+        view.findViewById<MaterialSpinner>(R.id.spinner14).selectedIndex = 21
+
         return view
     }
 }
