@@ -6,5 +6,6 @@ data class NewUser(
     val email: String,
     val password: String,
     val city: City,
+    val username: String,
     val accountType: AccountType
 )

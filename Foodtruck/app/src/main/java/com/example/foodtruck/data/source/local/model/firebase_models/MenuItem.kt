@@ -2,9 +2,8 @@ package com.example.foodtruck.data.source.local.model.firebase_models
 
 import android.graphics.Bitmap
 
-data class VendorMenuItem(
+data class MenuItem(
     val itemName: String,
-    val photoUris: List<Bitmap>,
-    val averageRating: Float
-) {
-}
+    val description: String,
+    val photoUris: List<String>
+)

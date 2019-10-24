@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 class AuthenticationViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository: AuthRepository = AuthRepository()
+
     private val _uid: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
     }
@@ -58,10 +59,10 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     }
     fun registerUser(email: String, password: String, city: City, username: String, accountType: AccountType) = viewModelScope.launch {
         try {
-            repository.registerWithEmailAndPassword(email, password)?.let {
-                val newUser = User(it, email, username, accountType, city)
-                repository.addNewUserTodatabase(newUser)
-                _uid.postValue(it)
+            repository.registerWithEmailAndPassword(email, password)?.let {uid ->
+                val newUser = NewUser(email, password, city, username, accountType)
+                repository.addNewUserTodatabase(newUser, uid)
+                _uid.postValue(uid)
                 _authenticationState.postValue(AuthenticationState.Authenticated)
             } ?: run {
                 _authenticationState.postValue(
