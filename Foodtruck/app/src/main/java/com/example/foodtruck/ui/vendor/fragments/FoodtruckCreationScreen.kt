@@ -53,7 +53,8 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
             //Are you sure you are deleting the menu?
             context!!.createAlert({d, i -> createdMenu = null
                                     btn_create_menu.setVisibilityToVisible()
-                                    btn_edit_menu.setVisibilityToGone()}, { d, i-> }).show()
+                                    btn_edit_menu.setVisibilityToGone()
+                                    btn_delete_menu.setVisibilityToGone()}, { d, i-> }).show()
         }
 
         btn_edit_menu.setOnClickListener {

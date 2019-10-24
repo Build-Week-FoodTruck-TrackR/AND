@@ -23,11 +23,11 @@ import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
 import java.lang.NumberFormatException
 import kotlin.properties.Delegates
 
-class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener {
+class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener, FoodDialog.FoodItemReceiver {
 
     var listener: MenuItemReceiver? = null
 
-    private lateinit var alertDialogView: View
+    //private lateinit var alertDialogView: View
     private lateinit var menuListAdapter: MenuListAdapter
     private var currentMenu  = Menu(mutableListOf())
 
@@ -66,7 +66,7 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
             currentMenu = arguments!!.get("menu_edit") as Menu
         }
 
-        menuListAdapter = MenuListAdapter(currentMenu)
+        menuListAdapter = MenuListAdapter(currentMenu, this)
         recycler_view.apply{
             adapter = menuListAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -74,52 +74,17 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
     }
 
     override fun onClick(view: View?) {
-
-        alertDialogView = LayoutInflater.from(context).inflate(R.layout.dialog_food_adder, null)
-
-        val alert = context!!.createAlert({d, i-> }, {d, i -> d.dismiss()}, null, "Submit", "Cancel", alertDialogView)
-        alert.show()
-
-        val positiveListener : (View) -> (Unit) = { view ->
-            val foodItemName = alertDialogView.findViewById<TextInputEditText>(R.id.et_fooditem_name).text.toString()
-            val foodItemPrice = alertDialogView.findViewById<TextInputEditText>(R.id.et_price).text.toString()
-            val foodItemDescription = alertDialogView.findViewById<TextInputEditText>(R.id.et_description).text.toString()
-
-            val priceInputLayout = alertDialogView.findViewById<TextInputLayout>(R.id.price_input)
-            priceInputLayout.error = "Menu item must have a price."
-
-            val nameInputLayout = alertDialogView.findViewById<TextInputLayout>(R.id.text_input_menu_name)
-
-            try {
-                if (foodItemName == ""){
-                    nameInputLayout.error = "Menu item must have a name."
-                }
-
-                val price = foodItemPrice.toDouble()
-
-                if(foodItemName != "") {
-                    val foodItem = FoodItem(price, foodItemName)
-
-                    if (foodItemDescription != "") {
-                        foodItem.foodDescription = foodItemDescription
-                    }
-                    //add to recyclerview
-                    addFoodItem(foodItem)
-                    alert.dismiss()
-                }
-            } catch (n: NumberFormatException) {
-                if(foodItemPrice == ""){
-                    priceInputLayout.error = "Menu item must have a price."
-                } else{
-                    priceInputLayout.error = "Price must be a number value."
-                }
-            }
-        }
-        alert.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(positiveListener)
+        val foodDialog = FoodDialog()
+        foodDialog.listener = this
+        foodDialog.show(fragmentManager!!, "food adder")
     }
 
-    private fun addFoodItem(foodItem: FoodItem) {
-        currentMenu.menuItemList.add(foodItem)
+    override fun receiveFoodItem(foodItem: FoodItem, tag: String, position: Int?) {
+        if(tag == "food adder") {
+            currentMenu.menuItemList.add(foodItem)
+        } else{
+            currentMenu.menuItemList[position!!] = foodItem
+        }
         menuListAdapter.notifyDataSetChanged()
     }
 
