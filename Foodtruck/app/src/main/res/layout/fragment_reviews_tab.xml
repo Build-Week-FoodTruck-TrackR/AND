@@ -16,7 +16,8 @@
         android:text="5.0"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
     <RatingBar
         android:id="@+id/rating_bar"

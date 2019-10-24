@@ -12,5 +12,18 @@ data class VendorAccount(
     val lastLocation: LatLng? = null,
     val reviews: List<Review>? = null,
     val menuItems: List<MenuItem>? = null,
+    val cusuineType: String? = null,
     val operationTimes: Nothing = TODO()
-)
+) {
+    fun getVendorInfoField() {
+        hashMapOf(
+            "businessName" to businessName,
+            "cusuineType" to cusuineType,
+            "averageRating" to avgRating,
+            "ownersName" to hashMapOf(
+                "firstName" to businessOwnerFirstName,
+                "lastName" to businessOwnerLastName
+            )
+        )
+    }
+}

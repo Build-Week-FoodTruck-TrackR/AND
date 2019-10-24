@@ -1,62 +1,106 @@
 package com.example.foodtruck.ui.vendor.fragments
 
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodtruck.R
+import com.example.foodtruck.adapters.vendor.MenuListAdapter
+import com.example.foodtruck.data.source.local.model.FoodItem
+import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
+import com.example.foodtruck.util.showShortToastMessage
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.activity_foodie.*
 import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
+import java.lang.NumberFormatException
+import kotlin.properties.Delegates
 
-class MenuCreationScreen: DialogFragment() {
+class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener, FoodDialog.FoodItemReceiver {
 
-    private lateinit var listener: MenuItemReceiver
+    var listener: MenuItemReceiver? = null
 
-    interface MenuItemReceiver{
-        fun receiveMenuItem(menu: Menu)
-    }
+    //private lateinit var alertDialogView: View
+    private lateinit var menuListAdapter: MenuListAdapter
+    private var currentMenu  = Menu(mutableListOf())
+
+   interface MenuItemReceiver{
+       fun receivePotentialMenu(menu: Menu?)
+   }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialog)
         super.onCreate(savedInstanceState)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is MenuItemReceiver) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val view = inflater.inflate(R.layout.fullscreen_dialog_menu_creation, container, false)
-        return view
+        return inflater.inflate(R.layout.fullscreen_dialog_menu_creation, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val positiveListener : (DialogInterface, Int) -> Unit = {
-            d, i ->
-            //user pressed submit
-            //(d as DialogFragment).view!!.findViewById<TextInputEditText>(
+        setupRecyclerView()
 
-            if(true){
+        top_toolbar.setNavigationOnClickListener {
+            context!!.createAlert({d, i -> dismiss() }, {d, i-> }).show() //stay on the fragment
+        }
 
+        top_toolbar.setOnMenuItemClickListener(this)
+
+        floating_action_btn.setOnClickListener(this)
+    }
+
+    private fun setupRecyclerView() {
+
+        val bundle = arguments
+        if(bundle != null){
+            if(tag == "uneditableMenuView"){
+                currentMenu = arguments!!.get("uneditableMenu") as Menu
+
+            } else{
+                currentMenu = arguments!!.get("menu_edit") as Menu
             }
         }
 
-        val negativeListener: (DialogInterface, Int) -> Unit = {
-            d, i ->
+        menuListAdapter = MenuListAdapter(currentMenu, this)
+        recycler_view.apply{
+            adapter = menuListAdapter
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
+    }
 
-        floating_action_btn.setOnClickListener{
-            context!!.createAlert(positiveListener, negativeListener, "Add food item", "Submit", "Cancel", R.layout.dialog_food_adder)
+    override fun onClick(view: View?) {
+        val foodDialog = FoodDialog()
+        foodDialog.listener = this
+        foodDialog.show(fragmentManager!!, "food adder")
+    }
+
+    override fun receiveFoodItem(foodItem: FoodItem, tag: String, position: Int?) {
+        if(tag == "food adder") {
+            currentMenu.menuItemList.add(foodItem)
+        } else{
+            currentMenu.menuItemList[position!!] = foodItem
         }
+        menuListAdapter.notifyDataSetChanged()
+    }
+
+    override fun onMenuItemClick(item: MenuItem?): Boolean {
+        if(currentMenu.menuItemList.size == 0){
+            context!!.showShortToastMessage("Must have food items to save menu.")
+        } else{
+            listener!!.receivePotentialMenu(currentMenu)
+            dismiss()
+        }
+        return true
     }
 }

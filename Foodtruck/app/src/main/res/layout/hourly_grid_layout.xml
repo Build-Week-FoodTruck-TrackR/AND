@@ -2,6 +2,7 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:padding="15dp"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"/>
 
         <Spinner
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -62,6 +64,7 @@
             android:layout_marginEnd="25dp"/>
 
         <Spinner
+            style="MySpinnerStyle"
             android:id="@+id/spinner3"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
@@ -76,6 +79,7 @@
 
         <Spinner
             android:id="@+id/spinner4"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -102,6 +106,7 @@
 
         <Spinner
             android:id="@+id/spinner5"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -115,6 +120,7 @@
 
         <Spinner
             android:id="@+id/spinner6"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -141,6 +147,7 @@
 
         <Spinner
             android:id="@+id/spinner7"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -154,6 +161,7 @@
 
         <Spinner
             android:id="@+id/spinner8"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -180,6 +188,7 @@
 
         <Spinner
             android:id="@+id/spinner9"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -193,6 +202,7 @@
 
         <Spinner
             android:id="@+id/spinner10"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -219,6 +229,7 @@
 
         <Spinner
             android:id="@+id/spinner11"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -232,6 +243,7 @@
 
         <Spinner
             android:id="@+id/spinner12"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -258,6 +270,7 @@
 
         <Spinner
             android:id="@+id/spinner13"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
@@ -271,6 +284,7 @@
 
         <Spinner
             android:id="@+id/spinner14"
+            style="MySpinnerStyle"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"/>
