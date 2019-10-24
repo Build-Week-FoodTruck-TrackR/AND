@@ -1,5 +1,6 @@
 package com.example.foodtruck.adapters.vendor
 
+/*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,4 +42,4 @@ class MenuListAdapter(val menuData: Menu): RecyclerView.Adapter<MenuListAdapter.
             val m = MenuCreationScreen()
         }
     }
-}
+}*/

@@ -1,5 +1,6 @@
 package com.example.foodtruck.ui.vendor.fragments
 
+/*
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
@@ -79,8 +80,10 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
-            /*val foodtruck = TODO()
-            listener.receiveFoodtruck(foodtruck)*/
+            */
+/*val foodtruck = TODO()
+            listener.receiveFoodtruck(foodtruck)*//*
+
         }
 
         dismiss()
@@ -90,4 +93,4 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
     override fun receiveMenuItem(menu: Menu) {
 
     }
-}
+}*/

@@ -113,7 +113,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="400dp">
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/email_textinput_layout"
 
                         android:layout_marginTop="16dp"
                         android:layout_marginStart="32dp"
@@ -124,19 +124,55 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp">
-                        <com.google.android.material.textfield.TextInputEditText
+                        android:layout_height="40dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/email_edit_text"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.button.MaterialButton
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/username_til"
+
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                        android:hint="Username"
+                        app:layout_constraintTop_toBottomOf="@id/email_textinput_layout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/username_et"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/password_textinput_layout"
+
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginEnd="32dp"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+                        android:hint="Password"
+                        app:layout_constraintTop_toBottomOf="@id/username_til"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp">
+                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/password_edit_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton android:id="@+id/vendor_submit_button"
                         android:layout_marginBottom="16dp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="Submit"
+                        android:text="Register"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"/>
 

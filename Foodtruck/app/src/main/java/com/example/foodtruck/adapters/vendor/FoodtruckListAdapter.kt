@@ -1,5 +1,6 @@
 package com.example.foodtruck.adapters.vendor
 
+/*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,4 +29,4 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>): RecyclerView.Adapt
         holder.foodTruckName.text = data[position].name
         holder.foodTruckModel.text = data[position].model
     }
-}
+}*/

@@ -1,14 +1,14 @@
-package com.example.foodtruck.data.source.remote.auth
+package com.example.foodtruck.data.source.firebase
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
 class FirebaseAuthSource {
 
     companion object {
-        val firebaseAuthSourceInstance = FirebaseAuthSource()
+        val firebaseAuthSourceInstance =
+            FirebaseAuthSource()
     }
 
     private val firebaseAuth: FirebaseAuth by lazy {
