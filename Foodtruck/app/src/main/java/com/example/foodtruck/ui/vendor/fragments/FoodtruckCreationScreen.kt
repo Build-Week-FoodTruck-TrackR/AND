@@ -57,7 +57,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         super.onViewCreated(view, savedInstanceState)
 
         top_toolbar.setNavigationOnClickListener {
-            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "YES", "NO","Are you sure you want to cancel?\nYour changes will not be saved.") //stay on the fragment
+            context!!.createAlert({d, i -> dismiss() }, {d, i-> }, "YES", "NO","Are you sure you want to cancel?\nYour changes will not be saved.").show() //stay on the fragment
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
@@ -88,7 +88,6 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
             //pass this data back to the activity
 
             val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, myMenu)
-
             listener.receiveFoodtruck(foodtruck)
         }
 

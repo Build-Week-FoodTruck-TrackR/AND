@@ -2,9 +2,12 @@ package com.example.foodtruck.util
 
 import android.content.Context
 import android.content.DialogInterface
+import android.text.Editable
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.android.material.textfield.TextInputEditText
 
 //create an alert with two buttons
 fun Context.createAlert(
@@ -13,21 +16,20 @@ fun Context.createAlert(
     positiveButtonText: String,
     negativeButtonText: String,
     message: String? = null,
-    layoutResId: Int? = null
-) {
+    view: View? = null
+) : AlertDialog {
     val a = AlertDialog.Builder(this)
         .setMessage(message)
         .setPositiveButton(positiveButtonText, positiveListener)
         .setNegativeButton(negativeButtonText, negativeListener)
 
-    layoutResId?.let{
+    view?.let{
         a.setView(it)
     }
     message?.let{
         a.setMessage(it)
     }
-        a.create()
-        a.show()
+    return a.create()
 }
 
 // View Visibility
