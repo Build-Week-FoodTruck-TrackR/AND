@@ -1,6 +1,7 @@
 package com.example.foodtruck.ui.vendor.fragments
 
 
+/*
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -54,3 +55,4 @@ class FoodtruckScreen : Fragment(), FoodtruckCreationScreen.FoodtruckReceiver {
         foodtruckListAdapter.notifyDataSetChanged()
     }
 }
+*/

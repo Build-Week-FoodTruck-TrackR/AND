@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "740688434677",
+    "firebase_url": "https://foodtruck-trackr.firebaseio.com",
+    "project_id": "foodtruck-trackr",
+    "storage_bucket": "foodtruck-trackr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740688434677:android:2eff0ef3df795aec39fcbc",
+        "android_client_info": {
+          "package_name": "com.example.foodtruck"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740688434677-7vir81upfbkr3qc1kp95bus1ak9ana9o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodtruck",
+            "certificate_hash": "ae3324515e42c3366907d4469be3bc9521fba494"
+          }
+        },
+        {
+          "client_id": "740688434677-94c1s73q8gg32i6877qvvuaq0r316mbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJm5kvn2zlnMzPA0lPgNdU86vZELdSwpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740688434677-94c1s73q8gg32i6877qvvuaq0r316mbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,16 +2,44 @@ package com.example.foodtruck.data.source.local.model
 
 import java.io.Serializable
 
-class NewUser(
-    val username: String,
-    val password: String,
+data class NewUser(
     val email: String,
+    val city: City,
+    val username: String,
     val accountType: AccountType
-) : Serializable {
-    fun getAccountType() : String {
-        return when(accountType) {
-            is AccountType.Foodie -> "USER_ACCOUNT"
-            is AccountType.Vendor -> "VENDOR_ACCOUNT"
+) {
+    private fun cityToString(): String {
+        return when(city) {
+            City.ChicagoIL -> {
+                "Chicago,IL"
+            }
+            City.BloomingtonIN -> {
+                "Bloomington,IN"
+            }
+            City.NewYorkCityNY -> {
+                "NewYork,NY"
+            }
+            City.BostonMA -> {
+                "Boston,MA"
+            }
         }
+    }
+    private fun accountTypeToString(): String {
+        return when(accountType) {
+            AccountType.Foodie -> {
+                "foodie"
+            }
+            AccountType.Vendor -> {
+                "vendor"
+            }
+        }
+    }
+    fun getFields(): HashMap<String, Any> {
+        return hashMapOf(
+            "email" to email,
+            "username" to username,
+            "city" to cityToString(),
+            "accountType" to accountTypeToString()
+        )
     }
 }
