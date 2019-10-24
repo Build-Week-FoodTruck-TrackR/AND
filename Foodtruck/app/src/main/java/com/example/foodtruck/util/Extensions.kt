@@ -13,9 +13,9 @@ import com.google.android.material.textfield.TextInputEditText
 fun Context.createAlert(
     positiveListener: (DialogInterface, Int) -> Unit,
     negativeListener: (DialogInterface, Int) -> Unit,
-    positiveButtonText: String,
-    negativeButtonText: String,
-    message: String? = null,
+    message: String? = "Are you sure you want to cancel?\nData may be lost.",
+    positiveButtonText: String = "YES",
+    negativeButtonText: String = "NO",
     view: View? = null
 ) : AlertDialog {
     val a = AlertDialog.Builder(this)

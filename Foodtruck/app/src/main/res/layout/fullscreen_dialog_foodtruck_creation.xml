@@ -92,46 +92,55 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tv_add_menu"
-            style="@style/HeaderTextStyle"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_create_menu"
+            android:text="Create Menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:padding="15dp"
-            android:text="@string/add_menu_to_food_truck"
-            android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.113"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_input_truck_model" />
 
-        <Switch
-            android:id="@+id/switch_menu"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_edit_menu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp"
+            android:text="Edit menu"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.798"
+            app:layout_constraintHorizontal_bias="0.274"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.336" />
+            app:layout_constraintTop_toBottomOf="@id/text_input_truck_model" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_delete_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#F00"
+            android:text="Delete menu"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.776"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_input_truck_model" />
 
         <TextView
             android:id="@+id/tv_operational_hours"
             style="@style/HeaderTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="92dp"
             android:paddingStart="15dp"
-            android:layout_marginTop="24dp"
             android:text="@string/hours_operational"
             android:textColor="#000"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_add_menu" />
+            app:layout_constraintTop_toBottomOf="@+id/text_input_truck_model" />
 
         <include
             android:id="@+id/grid_layout"
