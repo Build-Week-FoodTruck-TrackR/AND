@@ -137,397 +137,49 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fullscreen_dialog_foodtruck_creation, container, false)
-        view.findViewById<MaterialSpinner>(R.id.spinner1)
-            .setItems(
-        "00:00",
-        "01:00",
-        "02:00",
-        "03:00",
-        "04:00",
-        "05:00",
-        "06:00",
-        "07:00",
-        "08:00",
-        "09:00",
-        "10:00",
-        "11:00",
-        "12:00",
-        "13:00",
-        "14:00",
-        "15:00",
-        "16:00",
-        "17:00",
-        "18:00",
-        "19:00",
-        "20:00",
-        "21:00",
-        "22:00",
-        "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner1).selectedIndex = 9
 
-        view.findViewById<MaterialSpinner>(R.id.spinner2)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner2).selectedIndex = 21
-        view.findViewById<MaterialSpinner>(R.id.spinner3)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner3).selectedIndex = 9
+        val spinnerList = listOf<MaterialSpinner>(view.findViewById(R.id.spinner1), view.findViewById(R.id.spinner2),
+            view.findViewById(R.id.spinner3), view.findViewById(R.id.spinner4), view.findViewById(R.id.spinner5), view.findViewById(R.id.spinner6)
+            , view.findViewById(R.id.spinner7), view.findViewById(R.id.spinner8), view.findViewById(R.id.spinner9), view.findViewById(R.id.spinner10),
+            view.findViewById(R.id.spinner11), view.findViewById(R.id.spinner12), view.findViewById(R.id.spinner13), view.findViewById(R.id.spinner14))
 
-        view.findViewById<MaterialSpinner>(R.id.spinner4)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner4).selectedIndex = 21
-
-        view.findViewById<MaterialSpinner>(R.id.spinner5)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner5).selectedIndex = 9
-
-        view.findViewById<MaterialSpinner>(R.id.spinner6)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner6).selectedIndex = 21
-
-        view.findViewById<MaterialSpinner>(R.id.spinner7)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner7).selectedIndex = 9
-
-        view.findViewById<MaterialSpinner>(R.id.spinner8)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner8).selectedIndex = 21
-
-        view.findViewById<MaterialSpinner>(R.id.spinner9)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner9).selectedIndex = 9
-
-        view.findViewById<MaterialSpinner>(R.id.spinner10)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner10).selectedIndex = 21
-
-        view.findViewById<MaterialSpinner>(R.id.spinner11)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner11).selectedIndex = 9
-
-        view.findViewById<MaterialSpinner>(R.id.spinner12)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner12).selectedIndex = 21
-
-        view.findViewById<MaterialSpinner>(R.id.spinner13)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner13).selectedIndex = 9
-
-        view.findViewById<MaterialSpinner>(R.id.spinner14)
-            .setItems(
-                "00:00",
-                "01:00",
-                "02:00",
-                "03:00",
-                "04:00",
-                "05:00",
-                "06:00",
-                "07:00",
-                "08:00",
-                "09:00",
-                "10:00",
-                "11:00",
-                "12:00",
-                "13:00",
-                "14:00",
-                "15:00",
-                "16:00",
-                "17:00",
-                "18:00",
-                "19:00",
-                "20:00",
-                "21:00",
-                "22:00",
-                "23:00")
-        view.findViewById<MaterialSpinner>(R.id.spinner14).selectedIndex = 21
-
+        spinnerList.forEachIndexed { index, materialSpinner ->
+            setSpinnerItemsAndIndex(materialSpinner, (index+1)%2 == 0)
+        }
         return view
+    }
+
+    private fun setSpinnerItemsAndIndex(spinner: MaterialSpinner, isEven: Boolean){
+        spinner.setItems(
+            "00:00",
+            "01:00",
+            "02:00",
+            "03:00",
+            "04:00",
+            "05:00",
+            "06:00",
+            "07:00",
+            "08:00",
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00",
+            "17:00",
+            "18:00",
+            "19:00",
+            "20:00",
+            "21:00",
+            "22:00",
+            "23:00")
+
+            if(!isEven){
+                spinner.selectedIndex = 9
+            } else{
+                spinner.selectedIndex = 21
+            }
     }
 }
