@@ -5,12 +5,14 @@ import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.SaveableFoodtruck
+import com.example.foodtruck.util.createAlert
 
 class FoodTruckDetailsDialog: DialogFragment() {
 
@@ -20,7 +22,7 @@ class FoodTruckDetailsDialog: DialogFragment() {
 
         val a = AlertDialog.Builder(context)
             .setCancelable(true)
-            .setPositiveButton("YES"){d, i->}
+            .setPositiveButton("OK"){d, i->}
 
         return a.create()
     }
@@ -38,7 +40,15 @@ class FoodTruckDetailsDialog: DialogFragment() {
 
         alertDialogView.findViewById<Button>(R.id.button).setOnClickListener {
             //reveal operating hours
-
+            val a = AlertDialog.Builder(context)
+                .setCancelable(true)
+                .setView(R.layout.operational_hours_layout)
+                .setOnCancelListener {
+                    this.show(fragmentManager!!, "OK")
+                }
+                .setPositiveButton("OK"){ d, i->
+                    this.show(fragmentManager!!, "OK")
+                }
         }
 
         alertDialogView.findViewById<Button>(R.id.rating_bar).setOnClickListener {

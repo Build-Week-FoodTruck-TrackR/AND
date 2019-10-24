@@ -15,6 +15,7 @@ import com.example.foodtruck.adapters.vendor.MenuListAdapter
 import com.example.foodtruck.data.source.local.model.FoodItem
 import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
+import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.showShortToastMessage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
@@ -52,7 +53,11 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
         setupRecyclerView()
 
         top_toolbar.setNavigationOnClickListener {
+            if(tag == "uneditableMenuView") {
+                dismiss()
+            } else{
             context!!.createAlert({d, i -> dismiss() }, {d, i-> }).show() //stay on the fragment
+            }
         }
 
         top_toolbar.setOnMenuItemClickListener(this)
@@ -66,13 +71,14 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
         if(bundle != null){
             if(tag == "uneditableMenuView"){
                 currentMenu = arguments!!.get("uneditableMenu") as Menu
-
+                top_toolbar.menu.clear()
+                floating_action_btn.setVisibilityToGone()
             } else{
                 currentMenu = arguments!!.get("menu_edit") as Menu
             }
         }
 
-        menuListAdapter = MenuListAdapter(currentMenu, this)
+        menuListAdapter = MenuListAdapter(currentMenu, this, tag!!)
         recycler_view.apply{
             adapter = menuListAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

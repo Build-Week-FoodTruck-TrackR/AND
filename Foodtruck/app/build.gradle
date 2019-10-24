@@ -59,4 +59,5 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc01'
 
 
+    compile 'com.jaredrummler:material-spinner:1.3.1'
 }

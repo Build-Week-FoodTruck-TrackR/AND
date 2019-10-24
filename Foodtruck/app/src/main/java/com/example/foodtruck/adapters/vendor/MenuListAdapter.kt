@@ -15,7 +15,7 @@ import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.setVisibilityToVisible
 import kotlinx.android.synthetic.main.operator_menu_item_layout.view.*
 
-class MenuListAdapter(val menuData: Menu, val menuCreationScreen: MenuCreationScreen): RecyclerView.Adapter<MenuListAdapter.ViewHolder>() {
+class MenuListAdapter(val menuData: Menu, val menuCreationScreen: MenuCreationScreen, val tag: String): RecyclerView.Adapter<MenuListAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
         val menuItemName = view.tv_food_title
@@ -38,6 +38,11 @@ class MenuListAdapter(val menuData: Menu, val menuCreationScreen: MenuCreationSc
         holder.menuItemName.text = menuData.menuItemList[position].foodName
         holder.menuItemPrice.text = menuData.menuItemList[position].price.toString()
         holder.menuItemDescription.text = menuData.menuItemList[position].foodDescription
+
+        if(tag=="uneditableMenuView"){
+            holder.remove_item.setVisibilityToGone()
+            holder.edit_item.setVisibilityToGone()
+        }
 
         holder.remove_item.setOnClickListener {
             //remove this view from list
