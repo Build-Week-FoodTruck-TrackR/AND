@@ -9,7 +9,7 @@ import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.ui.vendor.fragments.FoodtruckCreationScreen
 
-class VendorActivity : AppCompatActivity(), FoodtruckCreationScreen.FoodtruckReceiver {
+class VendorActivity : AppCompatActivity() {
 
     private lateinit var navigationController: NavController
 
@@ -18,9 +18,5 @@ class VendorActivity : AppCompatActivity(), FoodtruckCreationScreen.FoodtruckRec
         setContentView(R.layout.activity_vendor)
 
         navigationController = Navigation.findNavController(this, R.id.nav_host)
-    }
-
-    override fun receiveFoodtruck(foodtruck: Foodtruck) {
-        Log.i("Receiving", "Foodtruck")
     }
 }

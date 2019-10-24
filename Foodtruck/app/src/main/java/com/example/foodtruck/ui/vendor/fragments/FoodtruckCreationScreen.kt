@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
 
 class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
 
-    private lateinit var listener: FoodtruckReceiver
+    lateinit var listener: FoodtruckReceiver
     private var createdMenu: Menu? = null
 
     interface FoodtruckReceiver{
@@ -89,7 +89,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
         if(foodtruckName != "" && foodtruckModel != ""){
             //pass this data back to the activity
-            val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0)
+            val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, createdMenu)
             listener.receiveFoodtruck(foodtruck)
             dismiss()
         }
@@ -99,15 +99,6 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialog)
         super.onCreate(savedInstanceState)
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is FoodtruckReceiver) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-        }
     }
 
     override fun onStart() {
