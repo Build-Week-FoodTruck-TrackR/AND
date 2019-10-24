@@ -5,6 +5,9 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class InitFirestore {
 
+    companion object {
+        val firestoreInstance = InitFirestore()
+    }
 
     private val db = FirebaseFirestore.getInstance()
 
