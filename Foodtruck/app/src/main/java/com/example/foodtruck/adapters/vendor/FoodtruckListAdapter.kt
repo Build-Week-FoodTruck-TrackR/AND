@@ -9,6 +9,7 @@ import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.ui.vendor.fragments.FoodtruckCreationScreen
 import com.example.foodtruck.ui.vendor.fragments.FoodtruckScreen
+import com.example.foodtruck.ui.vendor.fragments.MenuCreationScreen
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.foodtruck_item_layout.view.*
 
@@ -19,6 +20,7 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen
         val foodTruckModel = view.tv_foodtruck_model
         val cancelButton = view.img_cancel_btn
         val editButton = view.img_edit_btn
+        val viewMenuButton = view.btn_view_menu
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -49,6 +51,14 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen
             bundle.putInt("foodTruckToEditPosition", position)
             f.arguments = bundle
             f.show(foodtruckScreen.fragmentManager!!, "editingFoodTruck")
+        }
+
+        holder.viewMenuButton.setOnClickListener {
+            val menuCreationScreen = MenuCreationScreen()
+            val bundle = Bundle()
+            bundle.putSerializable("uneditableMenu", data[position].menu)
+            menuCreationScreen.arguments = bundle
+            menuCreationScreen.show(foodtruckScreen.fragmentManager!!, "uneditableMenuView")
         }
     }
 }

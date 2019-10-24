@@ -19,6 +19,7 @@ import com.example.foodtruck.util.showShortToastMessage
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.activity_foodie.*
 import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
 import java.lang.NumberFormatException
 import kotlin.properties.Delegates
@@ -63,7 +64,12 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
 
         val bundle = arguments
         if(bundle != null){
-            currentMenu = arguments!!.get("menu_edit") as Menu
+            if(tag == "uneditableMenuView"){
+                currentMenu = arguments!!.get("uneditableMenu") as Menu
+
+            } else{
+                currentMenu = arguments!!.get("menu_edit") as Menu
+            }
         }
 
         menuListAdapter = MenuListAdapter(currentMenu, this)
