@@ -9,7 +9,7 @@ import com.example.foodtruck.data.source.local.model.firebase_models.User
 class AuthRepository() {
 
     private val firebaseAuthSource = FirebaseAuthSource.firebaseAuthSourceInstance
-    private val firestore = InitFirestore.initFirestoreInstance
+    private val firestore = InitFirestore()
 
     suspend fun authenticateWithEmailAndPassword(email: String, password: String): String? {
         return firebaseAuthSource.signInWithEmailAndPassword(email, password)
@@ -17,11 +17,14 @@ class AuthRepository() {
     suspend fun registerWithEmailAndPassword(email: String, password: String): String? {
         return firebaseAuthSource.createAccountWithEmailAndPassword(email, password)
     }
-    fun addNewUserTodatabase(user: User) {
+   fun addNewUserTodatabase(user: User) {
         firestore.addUserToDatabase(user)
     }
     fun isUserLoggedIn(): Boolean {
         return firebaseAuthSource.isUserLoggedIn()
+    }
+    fun logout() {
+        firebaseAuthSource.logout()
     }
 
 }

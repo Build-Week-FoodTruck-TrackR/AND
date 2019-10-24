@@ -50,7 +50,7 @@ class SplashScreenFragment : Fragment() {
         }
 
         authViewModel.authenticationState.observe(this, authStateObserver)
-
+        authViewModel.signOutUser()
         authViewModel.isUserLoggedIn()
 
     }

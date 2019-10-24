@@ -4,12 +4,10 @@ import com.example.foodtruck.data.source.local.model.AccountType
 import com.example.foodtruck.data.source.local.model.City
 import com.example.foodtruck.data.source.local.model.firebase_models.User
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
 
 class InitFirestore {
 
-    companion object {
-        val initFirestoreInstance = InitFirestore()
-    }
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -22,34 +20,37 @@ class InitFirestore {
             "username" to user.username,
             "email" to user.email
         )
-        db.collection("users").document(user.userId).set(fields)
-    }
-}
-
-fun User.getCityAsString(): String {
-    return when (this.city) {
-        City.ChicagoIL -> {
-            "Chicago,IL"
-        }
-        City.BloomingtonIN -> {
-            "Bloomington,IN"
-        }
-        City.NewYorkCityNY -> {
-            "NewYork,NY"
-        }
-        City.BostonMA -> {
-            "Boston,MA"
+        val userRef = db.collection("users").document(user.userId)
+        db.runBatch { batch ->
+            batch.set(userRef, fields)
         }
     }
-}
 
-fun User.getAccountTypeAsString(): String {
-    return when (this.accountType) {
-        AccountType.Foodie -> {
-            "foodie"
+    fun User.getCityAsString(): String {
+        return when (this.city) {
+            City.ChicagoIL -> {
+                "Chicago,IL"
+            }
+            City.BloomingtonIN -> {
+                "Bloomington,IN"
+            }
+            City.NewYorkCityNY -> {
+                "NewYork,NY"
+            }
+            City.BostonMA -> {
+                "Boston,MA"
+            }
         }
-        AccountType.Vendor -> {
-            "vendor"
+    }
+
+    fun User.getAccountTypeAsString(): String {
+        return when (this.accountType) {
+            AccountType.Foodie -> {
+                "foodie"
+            }
+            AccountType.Vendor -> {
+                "vendor"
+            }
         }
     }
 }

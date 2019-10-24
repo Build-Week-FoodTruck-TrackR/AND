@@ -29,4 +29,7 @@ class FirebaseAuthSource {
     fun isUserLoggedIn(): Boolean {
         return firebaseAuth.currentUser != null
     }
+    fun logout(){
+        firebaseAuth.signOut()
+    }
 }
