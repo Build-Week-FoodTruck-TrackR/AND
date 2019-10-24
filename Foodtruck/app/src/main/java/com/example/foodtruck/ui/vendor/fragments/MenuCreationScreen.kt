@@ -65,11 +65,13 @@ class MenuCreationScreen: DialogFragment() {
                 val nameInputLayout = alertDialogView.findViewById<TextInputLayout>(R.id.text_input_menu_name)
 
                 try {
+                    if (foodItemName == ""){
+                    nameInputLayout.error = "Menu item must have a name."
+                    }
+
                     val price = foodItemPrice.toDouble()
 
-                    if (foodItemName == ""){
-                        nameInputLayout.error = "Menu item must have a name."
-                    } else {
+                    if(foodItemName != "") {
                         val foodItem = FoodItem(price, foodItemName)
 
                         if (foodItemDescription != "") {
@@ -83,9 +85,6 @@ class MenuCreationScreen: DialogFragment() {
                         priceInputLayout.error = "Menu item must have a price."
                     } else{
                         priceInputLayout.error = "Price must be a number value."
-                    }
-                    if(foodItemName == ""){
-                        nameInputLayout.error = "Menu item must have a name."
                     }
                 }
             }

@@ -84,14 +84,20 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         val saturdayCheckbox = grid_layout.findViewById<CheckBox>(R.id.checkbox_saturday)
         val sundayCheckbox = grid_layout.findViewById<CheckBox>(R.id.checkbox_sunday)
 
-        if(foodtruckName != "" && foodtruckModel != ""){
-            //pass this data back to the activity
-
-            val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, myMenu)
-            listener.receiveFoodtruck(foodtruck)
+        if(foodtruckName == ""){
+            textInputLayout.error = "Food truck must have a name."
         }
 
-        dismiss()
+        if(foodtruckModel == ""){
+            text_input_truck_model.error = "Food truck must have a model."
+        }
+
+        if(foodtruckName != "" && foodtruckModel != ""){
+            //pass this data back to the activity
+            val foodtruck = Foodtruck(foodtruckName, foodtruckModel, 0.0, 0.0, myMenu)
+            listener.receiveFoodtruck(foodtruck)
+            dismiss()
+        }
         return false
     }
 
