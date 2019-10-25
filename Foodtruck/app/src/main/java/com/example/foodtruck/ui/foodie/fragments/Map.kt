@@ -13,15 +13,8 @@ import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.type.LatLng
+import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
 
@@ -68,7 +61,17 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
 
         val mapFragment = map_frag as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        spinner_search_range.setItems("0.5", "1", "2", "5")
+        spinner_search_range.selectedIndex = 0
+        spinner_search_range.setOnItemSelectedListener{
+            materialSpinner, position, id, item ->
+
+            currentSearchRadius = materialSpinner.selectedIndex.toString().toDouble()
+        }
     }
+
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
@@ -103,9 +106,10 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     }
 
     private fun getFurthestFoodtruckLocation() {
-        //Iterates over all the foodtrucks in the given search range(getting data from backend), and sets the furthest foodtruck location
-        //add markers to every foodtruck while iterating, use foodie icon
-        //add a tag for each marker corresponding to its foodtrick
+
+        TODO("Iterate over all the foodtrucks in the given search range(getting data from backend), and sets the furthest foodtruck location"
+            + "Add markers to every foodtruck while iterating, use foodie icon. Add a tag for every marker, that is basically its vendor/foodtruck")
+
     }
 
     override fun onMarkerClick(marker: Marker?): Boolean {
