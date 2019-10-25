@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.AccountType
+import com.example.foodtruck.data.source.local.model.AuthenticationState
 import com.example.foodtruck.data.source.local.model.City
 import com.example.foodtruck.ui.authentication.AuthenticationViewModel
 import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.setVisibilityToVisible
 import com.example.foodtruck.util.showShortToastMessage
 import kotlinx.android.synthetic.main.fragment_signup.*
-import kotlinx.android.synthetic.main.fragment_signup.view.*
 
 class SignupFragment : Fragment() {
 
@@ -38,11 +38,32 @@ class SignupFragment : Fragment() {
                 .create(AuthenticationViewModel::class.java)
         }
 
-        vendor_submit_button.setOnClickListener {
-            if(!password_edit_text.text.isNullOrBlank() && !email_edit_text.text.isNullOrBlank() && !username_et.text.isNullOrBlank()) {
-                authViewModel.registerUser(email_edit_text.text.toString(), password_edit_text.text.toString(), username_et.text.toString(), City.BloomingtonIN, AccountType.Vendor)
+        vendor_register_button.setOnClickListener {
+            if(isVendorRegistrationFormValid()) {
+                authViewModel.registerUser(
+                   vendor_email_edit_text.text.toString(),
+                    vendor_password_edit_text.text.toString(),
+                    vendor_username_edit_text.text.toString(),
+                    City.BloomingtonIN,
+                    AccountType.Vendor,
+                    vendor_firstname_edit_text.text.toString(),
+                    vendor_lastname_edit_text.text.toString(),
+                    vendor_businessname_edit_text.text.toString()
+            )
+            }
+            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
+                SignupFragmentDirections.actionSignupFragmentToVendorActivity()
             }
         }
+        foodie_register_button.setOnClickListener {
+            if(isFoodieRegistrationFormValid()) {
+                authViewModel.registerUser(foodie_email_edit_text.text.toString(), foodie_password_edit_text.text.toString(), foodie_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Foodie)
+            }
+            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
+                SignupFragmentDirections.actionSignupFragmentToFoodieActivity()
+            }
+        }
+
         account_type_button_toggle_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
 
             when (isChecked) {
@@ -93,5 +114,22 @@ class SignupFragment : Fragment() {
         foodie_account_form_constraintlayout.setVisibilityToGone()
         vendor_account_form_constrainlayout.setVisibilityToGone()
         divider.setVisibilityToGone()
+    }
+    private fun isFoodieRegistrationFormValid(): Boolean {
+        return !foodie_password_edit_text.text.isNullOrBlank() && !foodie_email_edit_text.text.isNullOrBlank() && !foodie_username_edit_text.text.isNullOrBlank()
+    }
+    private fun isVendorRegistrationFormValid() : Boolean {
+       val textfields = listOf(
+           vendor_email_edit_text.text,
+           vendor_username_edit_text.text,
+           vendor_password_edit_text.text,
+           vendor_firstname_edit_text.text,
+           vendor_lastname_edit_text.text,
+           vendor_businessname_edit_text.text
+       )
+        val isAFieldBlank = textfields.any {
+            it.isNullOrEmpty()
+        }
+        return !isAFieldBlank
     }
 }

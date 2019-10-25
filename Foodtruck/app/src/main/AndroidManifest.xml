@@ -32,6 +32,9 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".ui.foodie.fragments.MapsActivity"
+            android:label="@string/title_activity_maps"></activity>
+        <activity
             android:name=".ui.vendor.VendorActivity"
             android:exported="true" />
         <activity

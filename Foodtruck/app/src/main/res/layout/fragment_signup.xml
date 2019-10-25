@@ -1,183 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.authentication.fragments.SignupFragment">
 
     <com.google.android.material.card.MaterialCardView
-        app:cardElevation="4dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:orientation="vertical"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/account_type_cl"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/account_type_cl"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp">
+                android:layout_height="120dp">
 
-                    <TextView android:id="@+id/account_type_tv"
-                        android:textAlignment="center"
-                        android:text="@string/account_type"
-                        android:textSize="18sp"
-                        android:layout_marginTop="12dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/account_type_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/account_type"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.button.MaterialButtonToggleGroup android:id="@+id/account_type_button_toggle_group"
-                        app:singleSelection="true"
-                        app:layout_constraintTop_toBottomOf="@id/account_type_tv"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <com.google.android.material.button.MaterialButton android:id="@+id/foodie_button"
-                            android:layout_marginEnd="1dp"
-                            android:backgroundTint="@color/button_color_state_list"
-                            style="@style/Widget.MaterialComponents.Button.Icon"
-                            android:text="@string/foodie"
-                            app:iconGravity="textStart"
-                            app:icon="@drawable/foodie_icon"
-                            android:layout_width="140dp"
-                            android:layout_height="60dp"/>
-                        <com.google.android.material.button.MaterialButton android:id="@+id/vendor_button"
-                            android:layout_marginStart="1dp"
-                            android:backgroundTint="@color/button_color_state_list"
-                            style="@style/Widget.MaterialComponents.Button.Icon"
-                            android:text="@string/vendor"
-                            app:iconGravity="textStart"
-                            app:icon="@drawable/vendor_icon"
-                            android:layout_width="140dp"
-                            android:layout_height="60dp"/>
-
-                    </com.google.android.material.button.MaterialButtonToggleGroup>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <View android:id="@+id/divider"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.6dp"
-                    android:background="@android:color/darker_gray"/>
-
-                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/foodie_account_form_constraintlayout"
-
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp">
-
-                    <com.google.android.material.textfield.TextInputLayout
-
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                        android:hint="Email"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp">
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/account_type_button_toggle_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_type_tv"
+                    app:singleSelection="true">
 
                     <com.google.android.material.button.MaterialButton
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="Submit"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        android:id="@+id/foodie_button"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="140dp"
+                        android:layout_height="60dp"
+                        android:layout_marginEnd="1dp"
+                        android:backgroundTint="@color/button_color_state_list"
+                        android:text="@string/foodie"
+                        app:icon="@drawable/foodie_icon"
+                        app:iconGravity="textStart" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/vendor_account_form_constrainlayout"
-                    android:visibility="gone"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp">
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/vendor_button"
+                        style="@style/Widget.MaterialComponents.Button.Icon"
+                        android:layout_width="140dp"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="1dp"
+                        android:backgroundTint="@color/button_color_state_list"
+                        android:text="@string/vendor"
+                        app:icon="@drawable/vendor_icon"
+                        app:iconGravity="textStart" />
 
-                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/email_textinput_layout"
+                </com.google.android.material.button.MaterialButtonToggleGroup>
 
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                        android:hint="Email"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/email_edit_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="0.6dp"
+                android:background="@android:color/darker_gray"
+                android:visibility="gone" />
 
-                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/username_til"
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/foodie_account_form_constraintlayout"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:visibility="gone">
 
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                        android:hint="Username"
-                        app:layout_constraintTop_toBottomOf="@id/email_textinput_layout"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/username_et"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                <com.google.android.material.textfield.TextInputLayout android:id="@+id/foodie_email_textinput_layout"
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                    style = "@style/SignupTIL"
+                    android:hint="@string/email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <com.google.android.material.textfield.TextInputLayout android:id="@+id/password_textinput_layout"
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/foodie_email_edit_text"
+                        style="@style/SignUpEditText" />
 
-                        android:layout_marginTop="16dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginEnd="32dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
-                        android:hint="Password"
-                        app:layout_constraintTop_toBottomOf="@id/username_til"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp">
-                        <com.google.android.material.textfield.TextInputEditText android:id="@+id/password_edit_text"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout android:id="@+id/foodie_username_text_input_layout"
+                    app:layout_constraintTop_toBottomOf="@id/foodie_email_textinput_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:hint="@string/username"
+                    style="@style/SignupTIL">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/foodie_username_edit_text"
+                        style="@style/SignUpEditText"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.button.MaterialButton android:id="@+id/vendor_submit_button"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintRight_toRightOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="Register"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"/>
+                <com.google.android.material.textfield.TextInputLayout android:id="@+id/foodie_password_til"
+                    app:layout_constraintTop_toBottomOf="@id/foodie_username_text_input_layout"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:hint="@string/password"
+                    style = "@style/SignupTIL">
+                    <com.google.android.material.textfield.TextInputEditText android:id="@+id/foodie_password_edit_text"
+                        android:inputType="textPassword"
+                        style = "@style/SignUpEditText"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </LinearLayout>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.button.MaterialButton android:id="@+id/foodie_register_button"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Submit"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vendor_account_form_constrainlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_email_textinput_layout"
+
+                    style ="@style/SignupTILDense"
+                    android:hint="@string/email"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vendor_email_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_username_til"
+
+                    style="@style/SignupTILDense"
+                    android:hint="Username"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_email_textinput_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vendor_username_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_password_textinput_layout"
+
+                    style="@style/SignupTILDense"
+                    android:hint="Password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_username_til">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:inputType="textPassword"
+                        android:id="@+id/vendor_password_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_firstname_textinput_layout"
+
+                    style="@style/SignupTILDense"
+                    android:hint="First Name"
+                    android:layout_width="130dp"
+                    android:layout_marginStart="0dp"
+                    app:layout_constraintStart_toStartOf="@id/vendor_password_textinput_layout"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_password_textinput_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vendor_firstname_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_lastname_textinput_layout"
+
+                    style="@style/SignupTILDense"
+                    android:hint="Last Name"
+                    android:layout_width="130dp"
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintEnd_toEndOf="@id/vendor_password_textinput_layout"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_password_textinput_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vendor_lastname_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/vendor_businessname_textinput_layout"
+
+                    style="@style/SignupTILDense"
+                    android:hint="Business Name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_lastname_textinput_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vendor_businessname_edit_text"
+                        style="@style/SignUpEditText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_marginTop="24dp"
+                    android:id="@+id/vendor_register_button"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="Register"
+                    app:layout_constraintTop_toBottomOf="@id/vendor_businessname_textinput_layout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
