@@ -5,5 +5,6 @@ import android.graphics.Bitmap
 data class MenuItem(
     val itemName: String,
     val description: String,
-    val photoUris: List<String>
+    val photoUris: List<String>,
+    val quotedPrice: Float
 )

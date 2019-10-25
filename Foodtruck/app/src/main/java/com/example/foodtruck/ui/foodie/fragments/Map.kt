@@ -13,7 +13,7 @@ import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
-import com.google.android.gms.location.LocationServices
+/*import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,11 +21,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.MarkerOptions*/
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
 
 
+/*
 class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback, GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
@@ -125,3 +126,4 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
         return true
     }
 }
+*/

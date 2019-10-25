@@ -7,7 +7,7 @@ data class VendorAccount(
     val businessName: String,
     val businessOwnerFirstName: String,
     val businessOwnerLastName: String,
-    val avgRating: Double = 3.0,
+    val avgRating: Float = 3.0f,
     val isOpenForBusiness: Boolean = false,
     val lastLocation: LatLng? = null,
     val reviews: List<Review>? = null,

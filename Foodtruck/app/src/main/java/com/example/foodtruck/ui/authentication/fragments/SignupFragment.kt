@@ -15,7 +15,6 @@ import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.setVisibilityToVisible
 import com.example.foodtruck.util.showShortToastMessage
 import kotlinx.android.synthetic.main.fragment_signup.*
-import kotlinx.android.synthetic.main.fragment_signup.view.*
 
 class SignupFragment : Fragment() {
 
@@ -38,11 +37,17 @@ class SignupFragment : Fragment() {
                 .create(AuthenticationViewModel::class.java)
         }
 
-        vendor_submit_button.setOnClickListener {
-            if(!password_edit_text.text.isNullOrBlank() && !email_edit_text.text.isNullOrBlank() && !username_et.text.isNullOrBlank()) {
-                authViewModel.registerUser(email_edit_text.text.toString(), password_edit_text.text.toString(), username_et.text.toString(), City.BloomingtonIN, AccountType.Vendor)
+        vendor_register_button.setOnClickListener {
+            if(!vendor_password_edit_text.text.isNullOrBlank() && !vendor_email_edit_text.text.isNullOrBlank() && !vendor_username_edit_text.text.isNullOrBlank()) {
+                authViewModel.registerUser(vendor_email_edit_text.text.toString(), vendor_password_edit_text.text.toString(), vendor_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Vendor)
             }
         }
+        foodie_register_button.setOnClickListener {
+            if(!foodie_password_edit_text.text.isNullOrBlank() && !foodie_email_edit_text.text.isNullOrBlank() && !foodie_username_edit_text.text.isNullOrBlank()) {
+                authViewModel.registerUser(foodie_email_edit_text.text.toString(), foodie_password_edit_text.text.toString(), foodie_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Foodie)
+            }
+        }
+
         account_type_button_toggle_group.addOnButtonCheckedListener { group, checkedId, isChecked ->
 
             when (isChecked) {
