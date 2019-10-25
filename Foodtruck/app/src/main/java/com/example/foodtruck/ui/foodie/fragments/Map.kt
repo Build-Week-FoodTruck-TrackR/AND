@@ -13,19 +13,10 @@ import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.LatLngBounds
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.type.LatLng
+import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
-
-
 
 
 class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsResultCallback, GoogleMap.OnMarkerClickListener {
@@ -35,13 +26,13 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     private lateinit var currentLocation: Location
 
     private var currentSearchRadius by Delegates.observable(0.0){
-            property, oldValue, newValue->
+        property, oldValue, newValue->
         map.clear()
         setCurrentLocation() //will set my current location again, as well as getting the furthest food truck, then scaling the zoom factor
     }
 
     val furthestFoodtruckLocation by Delegates.observable(LatLng(0.0,0.0)){
-            property, oldValue, newValue->
+        property, oldValue, newValue->
         //adjust the amount of zoom the map to the maximum zoom needed to see the current user's location and the furthest food track possible
         if(oldValue != newValue){
             val latLngBounds = LatLngBounds(LatLng(currentLocation.latitude, currentLocation.longitude), newValue)
@@ -74,7 +65,7 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
         spinner_search_range.setItems("0.5", "1", "2", "5")
         spinner_search_range.selectedIndex = 0
         spinner_search_range.setOnItemSelectedListener{
-                materialSpinner, position, id, item ->
+            materialSpinner, position, id, item ->
 
             currentSearchRadius = materialSpinner.selectedIndex.toString().toDouble()
         }
@@ -117,7 +108,7 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     private fun getFurthestFoodtruckLocation() {
 
         TODO("Iterate over all the foodtrucks in the given search range(getting data from backend), and sets the furthest foodtruck location"
-                + "Add markers to every foodtruck while iterating, use foodie icon. Add a tag for every marker, that is basically its vendor/foodtruck")
+            + "Add markers to every foodtruck while iterating, use foodie icon. Add a tag for every marker, that is basically its vendor/foodtruck")
 
     }
 

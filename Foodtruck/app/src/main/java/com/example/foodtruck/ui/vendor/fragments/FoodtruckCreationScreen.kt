@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.*
+import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -13,7 +14,9 @@ import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
 import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.setVisibilityToVisible
+import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
+import kotlinx.android.synthetic.main.hourly_grid_layout.*
 
 class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
 
@@ -117,6 +120,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setStyle(STYLE_NORMAL, R.style.AppTheme_FullScreenDialog)
+
         super.onCreate(savedInstanceState)
     }
 
@@ -133,7 +137,49 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         val view = inflater.inflate(R.layout.fullscreen_dialog_foodtruck_creation, container, false)
+
+        val spinnerList = listOf<MaterialSpinner>(view.findViewById(R.id.spinner1), view.findViewById(R.id.spinner2),
+            view.findViewById(R.id.spinner3), view.findViewById(R.id.spinner4), view.findViewById(R.id.spinner5), view.findViewById(R.id.spinner6)
+            , view.findViewById(R.id.spinner7), view.findViewById(R.id.spinner8), view.findViewById(R.id.spinner9), view.findViewById(R.id.spinner10),
+            view.findViewById(R.id.spinner11), view.findViewById(R.id.spinner12), view.findViewById(R.id.spinner13), view.findViewById(R.id.spinner14))
+
+        spinnerList.forEachIndexed { index, materialSpinner ->
+            setSpinnerItemsAndIndex(materialSpinner, (index+1)%2 == 0)
+        }
         return view
     }
 
+    private fun setSpinnerItemsAndIndex(spinner: MaterialSpinner, isEven: Boolean){
+        spinner.setItems(
+            "00:00",
+            "01:00",
+            "02:00",
+            "03:00",
+            "04:00",
+            "05:00",
+            "06:00",
+            "07:00",
+            "08:00",
+            "09:00",
+            "10:00",
+            "11:00",
+            "12:00",
+            "13:00",
+            "14:00",
+            "15:00",
+            "16:00",
+            "17:00",
+            "18:00",
+            "19:00",
+            "20:00",
+            "21:00",
+            "22:00",
+            "23:00")
+
+            if(!isEven){
+                spinner.selectedIndex = 9
+            } else{
+                spinner.selectedIndex = 21
+            }
+    }
 }

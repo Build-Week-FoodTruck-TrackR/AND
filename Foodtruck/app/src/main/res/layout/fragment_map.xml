@@ -28,13 +28,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/spinner_search_range"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
+    <com.jaredrummler.materialspinner.MaterialSpinner
         android:id="@+id/spinner_search_range"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="156dp"
         android:gravity="center_horizontal"
+        app:ms_dropdown_height="180dp"
         app:layout_constraintBottom_toTopOf="@id/map_frag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_current_city" />

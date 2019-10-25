@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:padding="15dp"
@@ -16,7 +17,7 @@
             android:checked="true"/>
 
         <TextView
-            android:id="@+id/spinner1"
+            android:id="@+id/tv_monday"
             android:text="@string/monday"
             android:fontFamily="serif"
             android:textColor="#000"
@@ -24,11 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="25.5dp"/>
 
-        <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="70dp"
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner1"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
 
         <TextView
             android:text="-"
@@ -37,11 +38,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner2"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
@@ -63,12 +65,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"/>
 
-        <Spinner
-            style="MySpinnerStyle"
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner3"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
 
         <TextView
             android:text="-"
@@ -77,12 +78,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner4"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
@@ -104,12 +105,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="1.8dp"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner5"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
         <TextView
             android:text="-"
@@ -118,12 +119,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner6"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
@@ -145,12 +146,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="17dp"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner7"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
         <TextView
             android:text="-"
@@ -159,14 +160,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner8"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
 
-    </LinearLayout>
+
+        </LinearLayout>
 
     <LinearLayout
         android:id="@+id/friday_column"
@@ -186,12 +187,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="37dp"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner9"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
         <TextView
             android:text="-"
@@ -200,12 +201,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner10"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
@@ -227,12 +228,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="21dp"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner11"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
         <TextView
             android:text="-"
@@ -241,12 +242,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner12"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
@@ -268,12 +269,12 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="31dp"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner13"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
         <TextView
             android:text="-"
@@ -282,12 +283,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Spinner
+        <com.jaredrummler.materialspinner.MaterialSpinner
             android:id="@+id/spinner14"
-            style="MySpinnerStyle"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"/>
+            app:ms_dropdown_height="180dp" />
+
 
     </LinearLayout>
 
