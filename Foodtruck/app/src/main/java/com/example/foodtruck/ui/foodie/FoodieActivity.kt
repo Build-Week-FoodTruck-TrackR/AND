@@ -21,7 +21,7 @@ class FoodieActivity : AppCompatActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        navController = Navigation.findNavController(this, R.id.foodie_nav_host_fragment)
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 
         setupActionBar()
         setupSideNavigation()

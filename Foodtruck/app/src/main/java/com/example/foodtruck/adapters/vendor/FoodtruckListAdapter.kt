@@ -8,12 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.example.foodtruck.ui.vendor.fragments.FoodtruckCreationScreen
+import com.example.foodtruck.ui.vendor.fragments.FoodtruckScreen
 //import com.example.foodtruck.ui.vendor.fragments.FoodtruckScreen
 import com.example.foodtruck.ui.vendor.fragments.MenuCreationScreen
 import com.example.foodtruck.util.createAlert
 import kotlinx.android.synthetic.main.foodtruck_item_layout.view.*
 
-/*
+
 class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen: FoodtruckScreen): RecyclerView.Adapter<FoodtruckListAdapter.ViewHolder>() {
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -62,4 +63,4 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen
             menuCreationScreen.show(foodtruckScreen.fragmentManager!!, "uneditableMenuView")
         }
     }
-}*/
+}
