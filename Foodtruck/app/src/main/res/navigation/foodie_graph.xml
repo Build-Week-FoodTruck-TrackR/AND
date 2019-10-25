@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/foodie_graph"
-    app:startDestination="@id/foodieHomepageFragment">
+    app:startDestination="@id/destination_map">
     <fragment
         android:id="@+id/destination_search"
         android:name="com.example.foodtruck.ui.foodie.fragments.Search"
@@ -24,14 +24,5 @@
         android:name="com.example.foodtruck.ui.foodie.fragments.Settings"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
-    <fragment
-        android:id="@+id/foodieHomepageFragment"
-        android:name="com.example.foodtruck.ui.foodie.fragments.FoodieHomepageFragment"
-        android:label="fragment_foodie_homepage"
-        tools:layout="@layout/fragment_foodie_homepage" >
-        <action
-            android:id="@+id/action_foodieHomepageFragment_to_destination_map"
-            app:destination="@id/destination_map" />
-    </fragment>
 
 </navigation>

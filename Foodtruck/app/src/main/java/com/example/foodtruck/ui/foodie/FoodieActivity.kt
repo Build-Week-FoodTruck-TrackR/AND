@@ -13,39 +13,25 @@ import kotlinx.android.synthetic.main.activity_foodie.*
 //
 class FoodieActivity : AppCompatActivity() {
     //
-    private val host by lazy {
-        NavHostFragment.create(R.navigation.foodie_graph)
-    }
-
-    private lateinit var foodieViewModel: FoodieViewModel
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_foodie)
 
-        foodieViewModel = ViewModelProvider
-            .AndroidViewModelFactory
-            .getInstance(application)
-            .create(FoodieViewModel::class.java)
-
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.foodie_nav_host_fragment, host)
-            .setPrimaryNavigationFragment(host).commit()
-
         setSupportActionBar(findViewById(R.id.toolbar))
 
-
+        navController = Navigation.findNavController(this, R.id.foodie_nav_host_fragment)
 
         setupActionBar()
         setupSideNavigation()
     }
 
-    private fun setupSideNavigation() {
-        NavigationUI.setupWithNavController(nav_view, TODO())
+    private fun setupSideNavigation(){
+        NavigationUI.setupWithNavController(nav_view, navController)
     }
 
-    private fun setupActionBar() {
-        NavigationUI.setupActionBarWithNavController(this, TODO(), drawer_layout)
+    private fun setupActionBar(){
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
     }
 }

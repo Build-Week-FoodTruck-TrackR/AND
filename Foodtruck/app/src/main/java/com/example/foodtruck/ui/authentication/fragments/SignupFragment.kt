@@ -38,12 +38,21 @@ class SignupFragment : Fragment() {
         }
 
         vendor_register_button.setOnClickListener {
-            if(!vendor_password_edit_text.text.isNullOrBlank() && !vendor_email_edit_text.text.isNullOrBlank() && !vendor_username_edit_text.text.isNullOrBlank()) {
-                authViewModel.registerUser(vendor_email_edit_text.text.toString(), vendor_password_edit_text.text.toString(), vendor_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Vendor)
+            if(isVendorRegistrationFormValid()) {
+                authViewModel.registerUser(
+                   vendor_email_edit_text.text.toString(),
+                    vendor_password_edit_text.text.toString(),
+                    vendor_username_edit_text.text.toString(),
+                    City.BloomingtonIN,
+                    AccountType.Vendor,
+                    vendor_firstname_edit_text.text.toString(),
+                    vendor_lastname_edit_text.text.toString(),
+                    vendor_businessname_edit_text.text.toString()
+            )
             }
         }
         foodie_register_button.setOnClickListener {
-            if(!foodie_password_edit_text.text.isNullOrBlank() && !foodie_email_edit_text.text.isNullOrBlank() && !foodie_username_edit_text.text.isNullOrBlank()) {
+            if(isFoodieRegistrationFormValid()) {
                 authViewModel.registerUser(foodie_email_edit_text.text.toString(), foodie_password_edit_text.text.toString(), foodie_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Foodie)
             }
         }
@@ -98,5 +107,22 @@ class SignupFragment : Fragment() {
         foodie_account_form_constraintlayout.setVisibilityToGone()
         vendor_account_form_constrainlayout.setVisibilityToGone()
         divider.setVisibilityToGone()
+    }
+    private fun isFoodieRegistrationFormValid(): Boolean {
+        return !foodie_password_edit_text.text.isNullOrBlank() && !foodie_email_edit_text.text.isNullOrBlank() && !foodie_username_edit_text.text.isNullOrBlank()
+    }
+    private fun isVendorRegistrationFormValid() : Boolean {
+       val textfields = listOf(
+           vendor_email_edit_text.text,
+           vendor_username_edit_text.text,
+           vendor_password_edit_text.text,
+           vendor_firstname_edit_text.text,
+           vendor_lastname_edit_text.text,
+           vendor_businessname_edit_text.text
+       )
+        val isAFieldBlank = textfields.any {
+            it.isNullOrEmpty()
+        }
+        return !isAFieldBlank
     }
 }
