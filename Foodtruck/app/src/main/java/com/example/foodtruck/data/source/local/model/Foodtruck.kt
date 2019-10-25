@@ -6,7 +6,7 @@ import java.io.Serializable
 //this is the foodtruck we will post to the backend, does not have any current reviews
 open class Foodtruck(
     val name: String,
-    val model: String,
+    val cuisines: String,
     val latitude: Double,
     val longitude: Double,
     var menu: Menu? = null
