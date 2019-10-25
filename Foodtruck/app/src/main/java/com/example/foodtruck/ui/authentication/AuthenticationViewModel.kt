@@ -2,6 +2,7 @@ package com.example.foodtruck.ui.authentication
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.example.foodtruck.data.source.firebase.InitFirestore
 import com.example.foodtruck.data.source.local.model.AccountType
 import com.example.foodtruck.data.source.local.model.AuthenticationState
 import com.example.foodtruck.data.source.local.model.City
@@ -57,11 +58,23 @@ class AuthenticationViewModel(application: Application) : AndroidViewModel(appli
     fun signOutUser() {
         repository.logout()
     }
-    fun registerUser(email: String, password: String,username: String, city: City, accountType: AccountType) = viewModelScope.launch {
+    fun registerUser(
+        email: String,
+        password: String,
+        username: String,
+        city: City,
+        accountType: AccountType,
+        ownerFirstName: String? = null,
+        ownerLastName: String? = null,
+        businessName: String? = null,
+        cuisineType: String? = null,
+        logo: String? = null
+    ) = viewModelScope.launch {
         try {
             repository.registerWithEmailAndPassword(email, password)?.let {uid ->
                 val newUser = NewUser(email,city, username, accountType)
                 repository.addNewUserTodatabase(newUser, uid)
+                repository.addNewAccount(uid, ownerFirstName, ownerLastName, businessName, cuisineType, logo)
                 _uid.postValue(uid)
                 _authenticationState.postValue(AuthenticationState.Authenticated)
             } ?: run {

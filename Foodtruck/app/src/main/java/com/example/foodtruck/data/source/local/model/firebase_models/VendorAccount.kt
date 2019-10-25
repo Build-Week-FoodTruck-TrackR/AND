@@ -1,13 +1,16 @@
 package com.example.foodtruck.data.source.local.model.firebase_models
 
+import com.google.firebase.firestore.IgnoreExtraProperties
 import com.google.type.LatLng
 
+@IgnoreExtraProperties
 data class VendorAccount(
     val vendorId: String,
     val businessName: String,
     val businessOwnerFirstName: String,
     val businessOwnerLastName: String,
-    val avgRating: Double = 3.0,
+    val avgRating: Float = 3.0f,
+    val vendorLogoUri: String,
     val isOpenForBusiness: Boolean = false,
     val lastLocation: LatLng? = null,
     val reviews: List<Review>? = null,
@@ -15,15 +18,18 @@ data class VendorAccount(
     val cusuineType: String? = null,
     val operationTimes: Nothing = TODO()
 ) {
-    fun getVendorInfoField() {
-        hashMapOf(
-            "businessName" to businessName,
-            "cusuineType" to cusuineType,
-            "averageRating" to avgRating,
-            "ownersName" to hashMapOf(
-                "firstName" to businessOwnerFirstName,
-                "lastName" to businessOwnerLastName
+    inner class VendorInfo() {
+        fun getVendorInfoFields() {
+            hashMapOf(
+                "businessName" to businessName,
+                "cusuineType" to cusuineType,
+                "averageRating" to avgRating,
+                "ownersName" to hashMapOf(
+                    "firstName" to businessOwnerFirstName,
+                    "lastName" to businessOwnerLastName
+                )
             )
-        )
+        }
     }
+
 }
