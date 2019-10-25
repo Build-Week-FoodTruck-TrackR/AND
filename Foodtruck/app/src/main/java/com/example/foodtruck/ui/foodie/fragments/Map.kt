@@ -12,9 +12,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
-import com.example.foodtruck.data.source.local.model.Foodtruck
-import com.google.type.LatLng
-import com.jaredrummler.materialspinner.MaterialSpinner
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
 
@@ -54,9 +60,8 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
         //gets the current spinner search radius amount
         currentSearchRadius = listOfSearchRanges[0]
 
-        spinner_search_range.setOnItemClickListener { adapterView, view, i, l ->
-            //use i (position) to determine what the search radius is
-            currentSearchRadius = listOfSearchRanges[i]
+        spinner_search_range.setOnItemSelectedListener { view, position, id, item ->
+            currentSearchRadius = listOfSearchRanges[position]
         }
 
         val mapFragment = map_frag as SupportMapFragment
@@ -78,6 +83,8 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
 
         if(PermissionChecker.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION)!= PermissionChecker.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(activity as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), FINE_ACCESS_REQUEST_CODE)
+        } else{
+            setCurrentLocation()
         }
     }
 

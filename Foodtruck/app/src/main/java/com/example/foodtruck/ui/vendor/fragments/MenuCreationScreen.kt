@@ -1,12 +1,10 @@
 package com.example.foodtruck.ui.vendor.fragments
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,13 +15,7 @@ import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
 import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.showShortToastMessage
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
-import kotlinx.android.synthetic.main.activity_foodie.*
 import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
-import java.lang.NumberFormatException
-import kotlin.properties.Delegates
 
 class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener, FoodDialog.FoodItemReceiver {
 
