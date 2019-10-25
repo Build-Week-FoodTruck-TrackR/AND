@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
@@ -11,8 +11,8 @@
         style="@style/HeaderTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="16dp"
         android:text="5.0"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,15 +21,29 @@
 
     <RatingBar
         android:id="@+id/rating_bar"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:isIndicator="true"
         android:progressBackgroundTint="#d4af37"
         android:progressTint="#d4af37"
         android:rating="5"
         app:layout_constraintStart_toEndOf="@+id/tv_truck_rating"
-        app:layout_constraintTop_toTopOf="@+id/tv_truck_rating" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_num_reviews"
+        style="@style/HeaderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="(193)"
+        android:textSize="25sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/rating_bar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/review_input"
@@ -37,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="10dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rating_bar">
 
@@ -55,7 +70,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_marginEnd="28dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="320dp"
         android:numStars="5"
         android:rating="0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,6 +81,7 @@
         android:id="@+id/btn_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="160dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,12 +89,12 @@
 
     <TextView
         android:id="@+id/tv_user_reviews"
+        style="@style/HeaderTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="Current Reviews"
-        style="@style/HeaderTextStyle"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
@@ -93,5 +110,15 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_user_reviews" />
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/ic_close_black_18dp"
+        app:layout_constraintStart_toEndOf="@id/tv_num_reviews"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,18 +12,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.PermissionChecker
 import androidx.fragment.app.Fragment
 import com.example.foodtruck.R
-import com.example.foodtruck.data.source.local.model.Foodtruck
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
-
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.type.LatLng
-import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlin.properties.Delegates
 
@@ -59,20 +56,19 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        map.setOnMarkerClickListener(this)
-        //gets the current spinner search radius amount
-        currentSearchRadius = listOfSearchRanges[0]
-
-        spinner_search_range.setOnItemClickListener { adapterView, view, i, l ->
-            //use i (position) to determine what the search radius is
-            currentSearchRadius = listOfSearchRanges[i]
-        }
-
         val mapFragment = map_frag as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        //gets the current spinner search radius amount
+        currentSearchRadius = listOfSearchRanges[0]
+
+        spinner_search_range.setOnItemSelectedListener { view, position, id, item ->
+            currentSearchRadius = listOfSearchRanges[position]
+        }
+
         spinner_search_range.setItems("0.5", "1", "2", "5")
         spinner_search_range.selectedIndex = 0
+
         spinner_search_range.setOnItemSelectedListener{
             materialSpinner, position, id, item ->
 
@@ -80,13 +76,14 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
         }
     }
 
-
-
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+        map.setOnMarkerClickListener(this)
 
         if(PermissionChecker.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION)!= PermissionChecker.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(activity as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), FINE_ACCESS_REQUEST_CODE)
+        } else{
+            setCurrentLocation()
         }
     }
 
@@ -130,9 +127,9 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
             } else{ //user clicked on a food truck
                 val foodTruckDetailsDialog = FoodTruckDetailsDialog()
                 val bundle = Bundle()
-                bundle.putSerializable("foodTruckMarker", it.tag as Foodtruck)
+                bundle.putSerializable("uneditableMenuView", tag)
                 foodTruckDetailsDialog.arguments = bundle
-                foodTruckDetailsDialog.show(fragmentManager!!, "launchingFoodtruckDetails")
+                foodTruckDetailsDialog.show(fragmentManager!!, "launchingFoodtruckDetails") //stripped down menu view
             }
         }
         return true

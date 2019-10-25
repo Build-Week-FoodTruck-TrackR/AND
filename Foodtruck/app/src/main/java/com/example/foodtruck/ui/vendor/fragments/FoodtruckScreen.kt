@@ -51,8 +51,5 @@ class FoodtruckScreen : Fragment(), FoodtruckCreationScreen.FoodtruckReceiver {
             foodtruckList.add(foodtruck)
         }
         foodtruckListAdapter.notifyDataSetChanged()
-        TODO("IF THE TAG IS editingFoodTruck, IT IS UPDATING AN EXISTING ENTRY AT POSITION" +
-                "INFORMATION SURROUNDING THE VENDOR/FOOD TRUCK NEEDS TO BE ADDED TO THE BACKEND(E.G. NAME, TRUCK MODEL, OPERATIONAL HOURS")
-
     }
 }
