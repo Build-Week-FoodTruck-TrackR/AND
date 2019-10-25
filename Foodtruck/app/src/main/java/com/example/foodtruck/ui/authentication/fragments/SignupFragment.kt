@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.AccountType
+import com.example.foodtruck.data.source.local.model.AuthenticationState
 import com.example.foodtruck.data.source.local.model.City
 import com.example.foodtruck.ui.authentication.AuthenticationViewModel
 import com.example.foodtruck.util.setVisibilityToGone
@@ -50,10 +51,16 @@ class SignupFragment : Fragment() {
                     vendor_businessname_edit_text.text.toString()
             )
             }
+            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
+                SignupFragmentDirections.actionSignupFragmentToVendorActivity()
+            }
         }
         foodie_register_button.setOnClickListener {
             if(isFoodieRegistrationFormValid()) {
                 authViewModel.registerUser(foodie_email_edit_text.text.toString(), foodie_password_edit_text.text.toString(), foodie_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Foodie)
+            }
+            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
+                SignupFragmentDirections.actionSignupFragmentToFoodieActivity()
             }
         }
 

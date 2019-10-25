@@ -56,7 +56,14 @@
             android:id="@+id/signupFragment"
             android:name="com.example.foodtruck.ui.authentication.fragments.SignupFragment"
             android:label="fragment_signup"
-            tools:layout="@layout/fragment_signup" />
+            tools:layout="@layout/fragment_signup" >
+            <action
+                android:id="@+id/action_signupFragment_to_vendorActivity"
+                app:destination="@id/vendorActivity" />
+            <action
+                android:id="@+id/action_signupFragment_to_foodieActivity"
+                app:destination="@id/foodieActivity" />
+        </fragment>
     </navigation>
     <activity
         android:id="@+id/foodieActivity"
