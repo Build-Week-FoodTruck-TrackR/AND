@@ -25,7 +25,7 @@ class FoodieActivity : AppCompatActivity() {
     }
 
     private fun setupSideNavigation(){
-        NavigationUI.setupWithNavController(nav_view, navController)
+        NavigationUI.setupWithNavController(side_nav_menu, navController)
     }
 
     private fun setupActionBar(){
