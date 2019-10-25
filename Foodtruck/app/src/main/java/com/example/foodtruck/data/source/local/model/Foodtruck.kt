@@ -7,8 +7,8 @@ import java.io.Serializable
 open class Foodtruck(
     val name: String,
     val cuisines: String,
-    val latitude: Double,
-    val longitude: Double,
+    val latitude: Double? = null,
+    val longitude: Double? = null,
     var menu: Menu? = null
 ) : Serializable
 

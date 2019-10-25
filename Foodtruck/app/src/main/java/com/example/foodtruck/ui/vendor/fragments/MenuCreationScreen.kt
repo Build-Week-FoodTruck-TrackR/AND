@@ -17,6 +17,7 @@ import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
 import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.showShortToastMessage
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fullscreen_dialog_menu_creation.*
 
 class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, View.OnClickListener, FoodDialog.FoodItemReceiver {
@@ -44,7 +45,7 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupRecyclerView()
+//        setupRecyclerView()
 
         top_toolbar.setNavigationOnClickListener {
             if(tag == "uneditableMenuV  iew") {
@@ -73,11 +74,9 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
                 currentMenu = bundle.get("menu_edit") as Menu
             }
         }
-        val menuItems = FirebaseAuthSource.firebaseAuthSourceInstance.getCurrentUserId()?.let {
-            InitFirestore.instance.readMenuItems(
-                it
-            )
-        }
+        val currentUser = FirebaseAuthSource.firebaseAuthSourceInstance.getCurrentUserId()
+        val menuItems = currentUser?.let { InitFirestore.instance.readMenuItems(it) }
+
         if(menuItems != null) {
             currentMenu = Menu(menuItems)
         }

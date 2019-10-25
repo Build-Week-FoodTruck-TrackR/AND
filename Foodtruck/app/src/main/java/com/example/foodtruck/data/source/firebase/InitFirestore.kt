@@ -1,8 +1,9 @@
 package com.example.foodtruck.data.source.firebase
 
 import com.example.foodtruck.data.source.local.model.FoodItem
+import com.example.foodtruck.data.source.local.model.Foodtruck
+import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.data.source.local.model.NewUser
-import com.example.foodtruck.data.source.local.model.firebase_models.FoodieAccount
 import com.example.foodtruck.data.source.local.model.firebase_models.MenuItem
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.tasks.await
@@ -22,6 +23,7 @@ class InitFirestore {
             batch.set(userRef, newUser.getFields())
         }
     }
+
     fun writeVendorMenuItem(
         userId: String,
         menuItem: MenuItem
@@ -41,25 +43,50 @@ class InitFirestore {
                 )
         }
     }
-    fun readMenuItems(
+
+    fun readVendorInfoForFoodTruck(userId: String): Foodtruck {
+        var businessName: String = ""
+        var cuisineType: String? = null
+        var menu: Menu = Menu(mutableListOf(
+        ))
+
+        db.collection("account_types")
+            .document("vendor_accounts")
+            .collection(userId).document("vendor_general_info").get().addOnSuccessListener {
+
+                businessName = it[FieldPath.of("businessName")] as String
+                cuisineType = it[FieldPath.of("cuisineType")] as String?
+                menu = Menu(readMenuItems(userId))
+            }
+        return if(cuisineType != null) {
+            Foodtruck("Business1", cuisineType!!, menu = menu)
+        } else {
+            Foodtruck(businessName,"none",menu = menu)
+        }
+    }
+
+   fun readMenuItems(
         userId: String
     ): MutableList<FoodItem> {
-        val vendorMenuItemsRef = db.collection("account_types")
+       val menuItems = mutableListOf<FoodItem>()
+       val foodItems: MutableList<FoodItem> = mutableListOf()
+        db.collection("account_types")
             .document("vendor_accounts")
             .collection(userId)
             .document("vendor_business_data")
             .collection("vendor_menu_items")
-            .get()
-        val menuItems = vendorMenuItemsRef.result?.documents
-        val foodItems: MutableList<FoodItem> = mutableListOf()
-        menuItems?.forEach {menuItem ->
-            val foodItemName = menuItem.id as String
-            val foodItemPrice = menuItem[FieldPath.of("quotedPrice")] as Double
-            val foodItemDescription = menuItem[FieldPath.of("itemDescription")] as String
-            foodItems.add(FoodItem(foodItemPrice, foodItemName, foodItemDescription))
-        }
-        return foodItems
+            .get().addOnSuccessListener {
+              val docSnap = it.documents
+                docSnap.forEach { menuItem ->
+                    val foodItemName = menuItem.id
+                    val foodItemPrice = menuItem[FieldPath.of("quotedPrice")] as Double
+                    val foodItemDescription = menuItem[FieldPath.of("itemDescription")] as String
+                    foodItems.add(FoodItem(foodItemPrice,foodItemName,foodItemDescription))
+                }
+            }
+       return foodItems
     }
+
     suspend fun writeNewAccount(
         userId: String,
         ownerFirstName: String? = null,
@@ -67,7 +94,7 @@ class InitFirestore {
         businessName: String? = null,
         cuisineType: String? = null,
         logo: String? = null
-        ) {
+    ) {
         val userRef = db.collection("users")
             .document(userId)
         val userInfo = userRef
@@ -119,7 +146,7 @@ class InitFirestore {
                     )
                     foodieAccountRef.document("user_info").set(
                         hashMapOf(
-                           "favoriteVendors" to null
+                            "favoriteVendors" to null
                         )
                     )
 
