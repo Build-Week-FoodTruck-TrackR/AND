@@ -63,9 +63,9 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/tv_foodtruck_model"
+            android:id="@+id/tv_foodtruck_cuisines"
             style="@style/HeaderTextStyle"
-            android:text="Truck Model"
+            android:text="Cuisines"
             android:textColor="#000"
             android:textSize="18sp"
             android:paddingStart="15dp"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            app:layout_constraintTop_toBottomOf="@id/tv_foodtruck_model"
+            app:layout_constraintTop_toBottomOf="@id/tv_foodtruck_cuisines"
             app:layout_constraintStart_toStartOf="parent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 

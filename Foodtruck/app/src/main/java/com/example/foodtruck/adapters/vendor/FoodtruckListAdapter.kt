@@ -17,7 +17,7 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen
 
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
         val foodTruckName = view.tv_foodtruck_name
-        val foodTruckModel = view.tv_foodtruck_model
+        val foodTruckModel = view.tv_foodtruck_cuisines
         val cancelButton = view.img_cancel_btn
         val editButton = view.img_edit_btn
         val viewMenuButton = view.btn_view_menu
@@ -34,7 +34,7 @@ class FoodtruckListAdapter(val data: MutableList<Foodtruck>, val foodtruckScreen
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.foodTruckName.text = data[position].name
-        holder.foodTruckModel.text = data[position].model
+        holder.foodTruckModel.text = data[position].cuisines
 
         holder.cancelButton.setOnClickListener {
             holder.view.context!!.createAlert(
