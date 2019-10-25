@@ -17,6 +17,7 @@ import com.example.foodtruck.util.createAlert
 class FoodTruckDetailsDialog: DialogFragment() {
 
     private lateinit var alertDialogView: View
+    private lateinit var saveableFoodtruck: SaveableFoodtruck
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -32,17 +33,19 @@ class FoodTruckDetailsDialog: DialogFragment() {
 
         val bundle = arguments
         if(bundle != null){
-            val foodtruck = bundle.get("foodTruckMarker") as SaveableFoodtruck
+            saveableFoodtruck = bundle.get("foodTruckMarker") as SaveableFoodtruck
 
-            alertDialogView.findViewById<TextView>(R.id.tv_foodtruck_name).text = foodtruck.name
-            alertDialogView.findViewById<Button>(R.id.rating_bar).text = "${foodtruck.averageReviewScore}\\t\\t\\t\\t ${foodtruck.allReviews.size}"
+            alertDialogView.findViewById<TextView>(R.id.tv_foodtruck_name).text = saveableFoodtruck.name
+            alertDialogView.findViewById<Button>(R.id.rating_bar).text = "${saveableFoodtruck.averageReviewScore}\\t\\t\\t\\t ${foodtruck.allReviews.size}"
         }
 
         alertDialogView.findViewById<Button>(R.id.button).setOnClickListener {
             //reveal operating hours
+            val alertDialogView = LayoutInflater.from(context).inflate(R.layout.operational_hours_layout, null)
+
             val a = AlertDialog.Builder(context)
                 .setCancelable(true)
-                .setView(R.layout.operational_hours_layout)
+                .setView(alertDialogView)
                 .setOnCancelListener {
                     this.show(fragmentManager!!, "OK")
                 }
