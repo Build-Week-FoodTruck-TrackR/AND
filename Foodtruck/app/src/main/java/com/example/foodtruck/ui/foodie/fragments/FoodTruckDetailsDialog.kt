@@ -59,13 +59,20 @@ class FoodTruckDetailsDialog: DialogFragment() {
 
         alertDialogView.findViewById<Button>(R.id.rating_bar).setOnClickListener {
             //bring us to review page
-
+            val reviewDialog = ReviewDialog()
+            val bundle = Bundle()
+            bundle.putSerializable("foodTruck", saveableFoodtruck)
+            reviewDialog.arguments = bundle
+            reviewDialog.show(fragmentManager!!, "review")
         }
 
         alertDialogView.findViewById<Button>(R.id.btn_view_menu).setOnClickListener {
             val m = MenuCreationScreen()
             val bundle = Bundle()
-            bundle.putSerializable("", "uneditable")
+            bundle.putSerializable("uneditableMenu", saveableFoodtruck.menu)
+            m.arguments = bundle
+            m.show(fragmentManager!!, "uneditableMenuView")
+
         }
 
         fragmentManager!!.executePendingTransactions()
