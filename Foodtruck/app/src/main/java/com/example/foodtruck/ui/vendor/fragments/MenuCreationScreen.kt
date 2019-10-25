@@ -62,14 +62,15 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
         val bundle = arguments
         if(bundle != null){
             if(tag == "uneditableMenuView"){
-                currentMenu = arguments!!.get("uneditableMenu") as Menu
+                if(bundle.get("uneditableMenu") != null){
+                    currentMenu = bundle.get("uneditableMenu") as Menu
+                }
                 top_toolbar.menu.clear()
                 floating_action_btn.setVisibilityToGone()
             } else{
-                currentMenu = arguments!!.get("menu_edit") as Menu
+                currentMenu = bundle.get("menu_edit") as Menu
             }
         }
-
         menuListAdapter = MenuListAdapter(currentMenu, this, tag!!)
         recycler_view.apply{
             adapter = menuListAdapter
