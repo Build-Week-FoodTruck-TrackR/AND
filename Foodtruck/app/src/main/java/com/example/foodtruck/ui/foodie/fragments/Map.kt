@@ -56,7 +56,9 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        map.setOnMarkerClickListener(this)
+        val mapFragment = map_frag as SupportMapFragment
+        mapFragment.getMapAsync(this)
+
         //gets the current spinner search radius amount
         currentSearchRadius = listOfSearchRanges[0]
 
@@ -64,11 +66,9 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
             currentSearchRadius = listOfSearchRanges[position]
         }
 
-        val mapFragment = map_frag as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
         spinner_search_range.setItems("0.5", "1", "2", "5")
         spinner_search_range.selectedIndex = 0
+
         spinner_search_range.setOnItemSelectedListener{
             materialSpinner, position, id, item ->
 
@@ -76,10 +76,9 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
         }
     }
 
-
-
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
+        map.setOnMarkerClickListener(this)
 
         if(PermissionChecker.checkSelfPermission(context!!, android.Manifest.permission.ACCESS_FINE_LOCATION)!= PermissionChecker.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(activity as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), FINE_ACCESS_REQUEST_CODE)
