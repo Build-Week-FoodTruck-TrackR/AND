@@ -45,7 +45,8 @@ class InitFirestore {
                     vendorAccountRef.document("vendor_business_data").set(
                         hashMapOf(
                             "isOpenForBusiness" to false,
-                            "lastLocation" to null
+                            "lastLocation" to null,
+                            "operationHours" to null
                         )
                     )
                     vendorAccountRef.document("vendor_logo").set(
