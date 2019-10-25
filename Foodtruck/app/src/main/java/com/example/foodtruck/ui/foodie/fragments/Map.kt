@@ -121,9 +121,9 @@ class Map : Fragment(), OnMapReadyCallback, ActivityCompat.OnRequestPermissionsR
             } else{ //user clicked on a food truck
                 val foodTruckDetailsDialog = FoodTruckDetailsDialog()
                 val bundle = Bundle()
-                bundle.putSerializable("foodTruckMarker", it.tag as Foodtruck)
+                bundle.putSerializable("uneditableMenuView", tag)
                 foodTruckDetailsDialog.arguments = bundle
-                foodTruckDetailsDialog.show(fragmentManager!!, "launchingFoodtruckDetails")
+                foodTruckDetailsDialog.show(fragmentManager!!, "launchingFoodtruckDetails") //stripped down menu view
             }
         }
         return true
