@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.foodtruck.R
 import com.example.foodtruck.data.source.local.model.AccountType
 import com.example.foodtruck.data.source.local.model.AuthenticationState
@@ -51,17 +52,18 @@ class SignupFragment : Fragment() {
                     vendor_businessname_edit_text.text.toString()
             )
             }
-            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
-                SignupFragmentDirections.actionSignupFragmentToVendorActivity()
-            }
+
+
+            findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToVendorActivity())
+
         }
         foodie_register_button.setOnClickListener {
             if(isFoodieRegistrationFormValid()) {
                 authViewModel.registerUser(foodie_email_edit_text.text.toString(), foodie_password_edit_text.text.toString(), foodie_username_edit_text.text.toString(), City.BloomingtonIN, AccountType.Foodie)
             }
-            if(authViewModel.authenticationState.value == AuthenticationState.Authenticated) {
-                SignupFragmentDirections.actionSignupFragmentToFoodieActivity()
-            }
+
+            findNavController().navigate(SignupFragmentDirections.actionSignupFragmentToFoodieActivity())
+
         }
 
         account_type_button_toggle_group.addOnButtonCheckedListener { group, checkedId, isChecked ->

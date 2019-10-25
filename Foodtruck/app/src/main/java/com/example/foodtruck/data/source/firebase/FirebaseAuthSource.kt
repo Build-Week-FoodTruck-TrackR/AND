@@ -32,4 +32,7 @@ class FirebaseAuthSource {
     fun logout(){
         firebaseAuth.signOut()
     }
+    fun getCurrentUserId() : String? {
+        return firebaseAuth.currentUser?.uid
+    }
 }

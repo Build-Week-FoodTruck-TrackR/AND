@@ -34,6 +34,7 @@ class SplashScreenFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         authViewModel = activity.let {
             val appContext = activity?.applicationContext as Application
             ViewModelProvider
@@ -44,13 +45,13 @@ class SplashScreenFragment : Fragment() {
 
         val authStateObserver = Observer<AuthenticationState> { newAuthenticationState ->
             when (newAuthenticationState) {
-                AuthenticationState.Authenticated -> toFoodieAction()
+                AuthenticationState.Authenticated -> toVendorAction()
                 AuthenticationState.Failed -> toAuthAction()
             }
         }
 
         authViewModel.authenticationState.observe(this, authStateObserver)
-        authViewModel.signOutUser()
+
         authViewModel.isUserLoggedIn()
 
     }

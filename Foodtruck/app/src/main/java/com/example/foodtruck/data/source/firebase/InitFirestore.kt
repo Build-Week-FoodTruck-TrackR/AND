@@ -1,7 +1,9 @@
 package com.example.foodtruck.data.source.firebase
 
+import com.example.foodtruck.data.source.local.model.FoodItem
 import com.example.foodtruck.data.source.local.model.NewUser
 import com.example.foodtruck.data.source.local.model.firebase_models.FoodieAccount
+import com.example.foodtruck.data.source.local.model.firebase_models.MenuItem
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.tasks.await
 
@@ -20,7 +22,44 @@ class InitFirestore {
             batch.set(userRef, newUser.getFields())
         }
     }
-
+    fun writeVendorMenuItem(
+        userId: String,
+        menuItem: MenuItem
+    ) {
+        val vendorAccountRef = db.collection("account_types")
+            .document("vendor_accounts")
+            .collection(userId)
+        db.runBatch { writeBatch ->
+            vendorAccountRef.document("vendor_business_data")
+                .collection("vendor_menu_items")
+                .document(menuItem.itemName).set(
+                    hashMapOf(
+                        "itemDescription" to menuItem.description,
+                        "quotedPrice" to menuItem.quotedPrice,
+                        "photoUris" to menuItem.photoUris
+                    )
+                )
+        }
+    }
+    fun readMenuItems(
+        userId: String
+    ): MutableList<FoodItem> {
+        val vendorMenuItemsRef = db.collection("account_types")
+            .document("vendor_accounts")
+            .collection(userId)
+            .document("vendor_business_data")
+            .collection("vendor_menu_items")
+            .get()
+        val menuItems = vendorMenuItemsRef.result?.documents
+        val foodItems: MutableList<FoodItem> = mutableListOf()
+        menuItems?.forEach {menuItem ->
+            val foodItemName = menuItem.id as String
+            val foodItemPrice = menuItem[FieldPath.of("quotedPrice")] as Double
+            val foodItemDescription = menuItem[FieldPath.of("itemDescription")] as String
+            foodItems.add(FoodItem(foodItemPrice, foodItemName, foodItemDescription))
+        }
+        return foodItems
+    }
     suspend fun writeNewAccount(
         userId: String,
         ownerFirstName: String? = null,

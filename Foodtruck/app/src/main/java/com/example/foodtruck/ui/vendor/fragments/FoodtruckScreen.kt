@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.example.foodtruck.R
 import com.example.foodtruck.adapters.vendor.FoodtruckListAdapter
+import com.example.foodtruck.data.source.firebase.FirebaseAuthSource
+import com.example.foodtruck.data.source.firebase.InitFirestore
 import com.example.foodtruck.data.source.local.model.Foodtruck
 import kotlinx.android.synthetic.main.fragment_foodtruck_screen.*
 

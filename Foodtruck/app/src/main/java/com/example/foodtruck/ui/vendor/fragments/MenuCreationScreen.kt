@@ -10,6 +10,8 @@ import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodtruck.R
 import com.example.foodtruck.adapters.vendor.MenuListAdapter
+import com.example.foodtruck.data.source.firebase.FirebaseAuthSource
+import com.example.foodtruck.data.source.firebase.InitFirestore
 import com.example.foodtruck.data.source.local.model.FoodItem
 import com.example.foodtruck.data.source.local.model.Menu
 import com.example.foodtruck.util.createAlert
@@ -71,6 +73,14 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
                 currentMenu = bundle.get("menu_edit") as Menu
             }
         }
+        val menuItems = FirebaseAuthSource.firebaseAuthSourceInstance.getCurrentUserId()?.let {
+            InitFirestore.instance.readMenuItems(
+                it
+            )
+        }
+        if(menuItems != null) {
+            currentMenu = Menu(menuItems)
+        }
         menuListAdapter = MenuListAdapter(currentMenu, this, tag!!)
         recycler_view.apply{
             adapter = menuListAdapter
@@ -86,6 +96,14 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
 
     override fun receiveFoodItem(foodItem: FoodItem, tag: String, position: Int?) {
         if(tag == "food adder") {
+            val menuItem = com.example.foodtruck.data.source.local.model.firebase_models.MenuItem(foodItem.foodName
+                , foodItem.foodDescription
+                , foodItem.price
+            )
+            val currentUserId = FirebaseAuthSource.firebaseAuthSourceInstance.getCurrentUserId()
+            if (currentUserId != null) {
+                InitFirestore.instance.writeVendorMenuItem(currentUserId, menuItem)
+            }
             currentMenu.menuItemList.add(foodItem)
         } else{
             currentMenu.menuItemList[position!!] = foodItem
