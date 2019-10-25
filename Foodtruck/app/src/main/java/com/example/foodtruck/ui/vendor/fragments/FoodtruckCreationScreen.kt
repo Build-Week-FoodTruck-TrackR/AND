@@ -1,10 +1,8 @@
 package com.example.foodtruck.ui.vendor.fragments
 
 import android.app.Dialog
-import android.content.Context
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.DialogFragment
@@ -16,7 +14,6 @@ import com.example.foodtruck.util.setVisibilityToGone
 import com.example.foodtruck.util.setVisibilityToVisible
 import com.jaredrummler.materialspinner.MaterialSpinner
 import kotlinx.android.synthetic.main.fullscreen_dialog_foodtruck_creation.*
-import kotlinx.android.synthetic.main.hourly_grid_layout.*
 
 class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, MenuCreationScreen.MenuItemReceiver {
 
@@ -79,7 +76,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         if(bundle != null){
             val foodtruck = bundle.get("foodTruckToEdit") as Foodtruck
             et_foodtruck_name.setText(foodtruck.name)
-            et_foodtruck_model.setText(foodtruck.model)
+            et_foodtruck_model.setText(foodtruck.cuisines)
             foodtruck.menu?.let{
                 createdMenu = it
                 btn_create_menu.setVisibilityToGone()
@@ -106,7 +103,7 @@ class FoodtruckCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener
         }
 
         if(foodtruckModel == ""){
-            text_input_truck_model.error = "Food truck must have a model."
+            text_input_truck_model.error = "Food truck must have cuisines."
         }
 
         if(foodtruckName != "" && foodtruckModel != ""){

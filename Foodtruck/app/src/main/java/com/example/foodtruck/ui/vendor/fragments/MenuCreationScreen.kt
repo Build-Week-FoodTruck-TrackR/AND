@@ -47,7 +47,7 @@ class MenuCreationScreen: DialogFragment(), Toolbar.OnMenuItemClickListener, Vie
         setupRecyclerView()
 
         top_toolbar.setNavigationOnClickListener {
-            if(tag == "uneditableMenuView") {
+            if(tag == "uneditableMenuV  iew") {
                 dismiss()
             } else{
             context!!.createAlert({d, i -> dismiss() }, {d, i-> }).show() //stay on the fragment
